@@ -18,17 +18,17 @@ export default function Header() {
     <header className="fixed top-0 left-0 right-0 z-50 bg-white shadow-sm">
       <div className="section-container flex items-center justify-between py-4">
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-3">
+        <Link to="/" className="flex items-center gap-4">
           <img
             src="/images/logo.png"
             alt="MetaPhase EDG logo"
-            className="h-16 w-auto"
+            className="h-24 w-auto"
           />
           <div>
-            <span className="text-2xl font-semibold text-[#16163F] font-work-sans">
+            <span className="text-[42px] font-semibold text-[#16163F] font-work-sans leading-tight block">
               MetaPhase EDG
             </span>
-            <p className="text-xs text-[#16163F] tracking-wide">
+            <p className="text-base text-[#16163F] font-work-sans font-semibold">
               Problem Solvers for a Digital World
             </p>
           </div>

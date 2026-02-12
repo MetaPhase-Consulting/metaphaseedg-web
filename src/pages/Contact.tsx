@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { MapPin, Mail, Phone } from 'lucide-react';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -28,57 +27,58 @@ export default function Contact() {
 
   return (
     <div>
-      {/* Hero Section */}
-      <section className="py-16 bg-white">
-        <div className="section-container">
+      {/* Hero Section — centered to match original */}
+      <section className="py-12 bg-white">
+        <div className="section-container text-center">
           <h1 className="text-[22px] font-semibold text-[#16163F] mb-2">
             Problem Solvers for a Digital World
           </h1>
-          <h2 className="text-[56px] font-semibold text-[#16163F] leading-tight mb-4">
+          <h2 className="text-[56px] font-semibold text-[#9E3FFD] leading-tight mb-4">
             Contact Us
           </h2>
-          <p className="text-[26px] font-light text-[#16163F] mb-8">
+          <p className="text-[26px] font-light text-[#16163F]">
             Want to learn more about MetaPhase EDG?
           </p>
         </div>
       </section>
 
       {/* Contact Info + Form Section */}
-      <section className="py-16 bg-white">
-        <div className="section-container">
+      <section className="relative py-16">
+        {/* Background image */}
+        <div className="absolute inset-0 z-0">
+          <img
+            src="/images/hero-bg.jpg"
+            alt=""
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-white/85" />
+        </div>
+
+        <div className="section-container relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             {/* Contact Information */}
             <div>
-              <div className="space-y-6">
-                <div className="flex items-start gap-4">
-                  <MapPin className="text-[#36A6ED] mt-1 flex-shrink-0" size={20} />
-                  <p className="text-base text-[#16163F]">
-                    11911 Freedom Dr. Suite 1010<br />
-                    Reston, VA 20190
-                  </p>
-                </div>
-                <div className="flex items-start gap-4">
-                  <Mail className="text-[#36A6ED] mt-1 flex-shrink-0" size={20} />
-                  <a
-                    href="mailto:info@metaphaseedg.com"
-                    className="text-base text-[#16163F] hover:text-[#9E3FFD] transition-colors"
-                  >
-                    info@metaphaseedg.com
-                  </a>
-                </div>
-                <div className="flex items-start gap-4">
-                  <Phone className="text-[#36A6ED] mt-1 flex-shrink-0" size={20} />
-                  <a
-                    href="tel:301-537-3719"
-                    className="text-base text-[#16163F] hover:text-[#9E3FFD] transition-colors"
-                  >
-                    301-537-3719
-                  </a>
-                </div>
+              <div className="space-y-4">
+                <p className="text-base text-[#16163F]">
+                  11911 Freedom Dr. Suite 1010<br />
+                  Reston, VA 20190
+                </p>
+                <a
+                  href="mailto:info@metaphaseedg.com"
+                  className="block text-base text-[#16163F] hover:text-[#9E3FFD] transition-colors"
+                >
+                  info@metaphaseedg.com
+                </a>
+                <a
+                  href="tel:301-537-3719"
+                  className="block text-base text-[#16163F] hover:text-[#9E3FFD] transition-colors"
+                >
+                  301-537-3719
+                </a>
               </div>
 
-              {/* Background image */}
-              <div className="mt-8 rounded-lg overflow-hidden">
+              {/* JV illustration */}
+              <div className="mt-8">
                 <img
                   src="/images/jv-icons.png"
                   alt="MetaPhase EDG"
@@ -110,7 +110,7 @@ export default function Contact() {
                         required
                         value={formData.firstName}
                         onChange={handleChange}
-                        className="w-full border-b-2 border-gray-300 py-3 px-1 text-base text-[#16163F] placeholder-gray-400 focus:border-[#36A6ED] focus:outline-none transition-colors"
+                        className="w-full border-b-2 border-gray-300 bg-transparent py-3 px-1 text-base text-[#16163F] placeholder-gray-400 focus:border-[#36A6ED] focus:outline-none transition-colors"
                       />
                     </div>
                     <div>
@@ -125,7 +125,7 @@ export default function Contact() {
                         required
                         value={formData.lastName}
                         onChange={handleChange}
-                        className="w-full border-b-2 border-gray-300 py-3 px-1 text-base text-[#16163F] placeholder-gray-400 focus:border-[#36A6ED] focus:outline-none transition-colors"
+                        className="w-full border-b-2 border-gray-300 bg-transparent py-3 px-1 text-base text-[#16163F] placeholder-gray-400 focus:border-[#36A6ED] focus:outline-none transition-colors"
                       />
                     </div>
                   </div>
@@ -141,7 +141,7 @@ export default function Contact() {
                       required
                       value={formData.email}
                       onChange={handleChange}
-                      className="w-full border-b-2 border-gray-300 py-3 px-1 text-base text-[#16163F] placeholder-gray-400 focus:border-[#36A6ED] focus:outline-none transition-colors"
+                      className="w-full border-b-2 border-gray-300 bg-transparent py-3 px-1 text-base text-[#16163F] placeholder-gray-400 focus:border-[#36A6ED] focus:outline-none transition-colors"
                     />
                   </div>
                   <div>
@@ -156,7 +156,7 @@ export default function Contact() {
                       required
                       value={formData.message}
                       onChange={handleChange}
-                      className="w-full border-b-2 border-gray-300 py-3 px-1 text-base text-[#16163F] placeholder-gray-400 focus:border-[#36A6ED] focus:outline-none transition-colors resize-none"
+                      className="w-full border-b-2 border-gray-300 bg-transparent py-3 px-1 text-base text-[#16163F] placeholder-gray-400 focus:border-[#36A6ED] focus:outline-none transition-colors resize-none"
                     />
                   </div>
                   <button

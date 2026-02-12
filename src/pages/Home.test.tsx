@@ -19,29 +19,22 @@ describe('Home', () => {
     ).toBeInTheDocument();
   });
 
-  it('renders the Our Solutions heading', () => {
+  it('renders the three column headings', () => {
     renderWithRouter();
+    expect(screen.getByText('Our Focus')).toBeInTheDocument();
+    expect(screen.getByText('Our Leadership')).toBeInTheDocument();
     expect(screen.getByText('Our Solutions')).toBeInTheDocument();
   });
 
-  it('renders all service cards', () => {
+  it('renders the hero background image', () => {
     renderWithRouter();
-    expect(screen.getByText('Advisory Solutions')).toBeInTheDocument();
-    expect(screen.getByText('Digital Platform Modernization')).toBeInTheDocument();
-    expect(screen.getByText('Data Analytics')).toBeInTheDocument();
-    expect(screen.getByText('Cloud Engineering')).toBeInTheDocument();
-    expect(screen.getByText('Cybersecurity')).toBeInTheDocument();
-    expect(screen.getByText('Experience Design')).toBeInTheDocument();
+    expect(screen.getByAltText('Team collaboration in a modern office')).toBeInTheDocument();
   });
 
-  it('renders the CTA section', () => {
+  it('renders the three column images', () => {
     renderWithRouter();
-    expect(screen.getByText('Ready to Transform Your Mission?')).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: /contact us/i })).toHaveAttribute('href', '/contact');
-  });
-
-  it('renders the JV illustration', () => {
-    renderWithRouter();
-    expect(screen.getByAltText('MetaPhase EDG Joint Venture Illustration')).toBeInTheDocument();
+    expect(screen.getByAltText('Consulting professionals')).toBeInTheDocument();
+    expect(screen.getByAltText('Business leadership meeting')).toBeInTheDocument();
+    expect(screen.getByAltText('Technology solutions')).toBeInTheDocument();
   });
 });
