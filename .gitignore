@@ -42,3 +42,6 @@ screenshots/
 # Environment
 .env
 .env.*
+
+# Local Netlify folder
+.netlify
