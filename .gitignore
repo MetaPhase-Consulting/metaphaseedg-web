@@ -30,8 +30,14 @@ coverage/
 
 # Scraping artifacts (not needed in repo)
 scraped-content.json
+scraped-remaining.json
 scrape-site.mjs
+scrape3.mjs
+take-screenshots.mjs
 screenshots/
+
+# Vite cache
+.vite/
 
 # Environment
 .env
