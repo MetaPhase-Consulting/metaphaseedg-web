@@ -5,7 +5,7 @@
 [![Vite](https://img.shields.io/badge/Vite-7-646cff?logo=vite&logoColor=white)](https://vitejs.dev/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind-3-38bdf8?logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
 [![Accessibility](https://img.shields.io/badge/a11y-WCAG%202.1%20AA-4A6CD4)](tests/e2e/accessibility.spec.ts)
-[![CI](https://github.com/metaphaseedg/metaphaseedg-web/actions/workflows/ci.yml/badge.svg)](.github/workflows/ci.yml)
+[![CI](https://github.com/MetaPhase-Consulting/metaphaseedg-web/actions/workflows/ci.yml/badge.svg)](.github/workflows/ci.yml)
 
 # MetaPhase EDG Website
 
