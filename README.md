@@ -10,7 +10,7 @@
 # MetaPhase EDG Website
 
 Corporate website for **MetaPhase EDG** — a Solutions Integrator joint venture between
-**MetaPhase, LLC** and **SharpEDG, LLC**, bringing cutting-edge technology and strategic
+**MetaPhase Consulting, LLC** and **SharpEDG, LLC**, bringing cutting-edge technology and strategic
 management consulting to the Federal mission.
 
 **Live:** [www.metaphaseedg.com](https://www.metaphaseedg.com)

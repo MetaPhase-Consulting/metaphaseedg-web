@@ -7,7 +7,7 @@ test.describe('Contact Page', () => {
 
   test('displays contact information', async ({ page }) => {
     const main = page.getByRole('main');
-    await expect(main.getByText('11911 Freedom Dr. Suite 1010').first()).toBeVisible();
+    await expect(main.getByText(/11911 Freedom Dr/).first()).toBeVisible();
     await expect(main.getByRole('link', { name: 'info@metaphaseedg.com', exact: true })).toBeVisible();
     await expect(main.getByText('703-399-4069')).toBeVisible();
   });

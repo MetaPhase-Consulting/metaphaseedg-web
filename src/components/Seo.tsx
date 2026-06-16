@@ -8,21 +8,24 @@ type SeoProps = {
   jsonLd?: object | object[];
   /** Optional Open Graph image (absolute or root-relative path). */
   image?: string;
+  /** Set on pages that should not be indexed (e.g. 404). */
+  noindex?: boolean;
 };
 
 // Uses React 19 native document metadata: <title>/<meta>/<link> rendered here are
 // hoisted to <head> on the client, and relocated into <head> at prerender time by
 // scripts/prerender.mjs. JSON-LD <script> stays in <body>, which is valid for crawlers.
-export default function Seo({ title, description, path, jsonLd, image }: SeoProps) {
+export default function Seo({ title, description, path, jsonLd, image, noindex }: SeoProps) {
   const url = `${SITE_URL}${path === '/' ? '' : path}`;
   const fullTitle = path === '/' ? title : `${title} | ${ORG.name}`;
-  const ogImage = `${SITE_URL}${image ?? '/images/logo-large.png'}`;
+  const ogImage = `${SITE_URL}${image ?? '/images/og-card.png'}`;
   const blocks = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
 
   return (
     <>
       <title>{fullTitle}</title>
       <meta name="description" content={description} />
+      {noindex && <meta name="robots" content="noindex, nofollow" />}
       <link rel="canonical" href={url} />
 
       <meta property="og:type" content="website" />

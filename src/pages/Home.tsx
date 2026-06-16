@@ -12,7 +12,7 @@ export default function Home() {
           faqLd([
             {
               q: 'What is MetaPhase EDG?',
-              a: 'MetaPhase EDG is a Solutions Integrator and SBA-certified 8(a), EDWOSB, WOSB Small Business Joint Venture between MetaPhase, LLC and SharpEDG, LLC, providing technology and management consulting solutions for the U.S. Federal government.',
+              a: 'MetaPhase EDG is a Solutions Integrator and SBA-certified 8(a), EDWOSB, WOSB Small Business Joint Venture between MetaPhase Consulting, LLC and SharpEDG, LLC, providing technology and management consulting solutions for the U.S. Federal government.',
             },
             {
               q: 'What certifications does MetaPhase EDG hold?',

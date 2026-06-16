@@ -69,9 +69,10 @@ describe('About', () => {
     expect(screen.getByRole('heading', { name: 'SharpEDG', level: 3 })).toBeInTheDocument();
   });
 
-  it('no longer says "MetaPhase Consulting"', () => {
+  it('uses the "MetaPhase" brand name for the company heading (not "MetaPhase Consulting")', () => {
     renderWithRouter();
-    expect(screen.queryByText(/MetaPhase Consulting/)).not.toBeInTheDocument();
+    expect(screen.queryByRole('heading', { name: 'MetaPhase Consulting' })).not.toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: 'MetaPhase', level: 3 })).toBeInTheDocument();
   });
 
   it('renders Learn More links', () => {

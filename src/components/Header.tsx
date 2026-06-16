@@ -26,10 +26,10 @@ export default function Header() {
         {/* Logo + two-color wordmark */}
         <Link to="/" className="flex items-center gap-3 sm:gap-4" aria-label="MetaPhase EDG home">
           <img
-            src="/images/logo.png"
+            src="/images/metaphase-edg-icon.png"
             alt=""
             aria-hidden="true"
-            className="h-14 sm:h-16 lg:h-20 w-auto shrink-0"
+            className="h-12 sm:h-16 lg:h-[72px] w-auto shrink-0"
           />
           <div className="min-w-0">
             <span className="text-2xl sm:text-[34px] lg:text-[42px] font-semibold font-work-sans leading-tight block">

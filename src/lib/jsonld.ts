@@ -1,63 +1,7 @@
-import { SITE_URL, ORG } from './site';
+import { SITE_URL } from './site';
 
-const orgId = `${SITE_URL}/#organization`;
-
-export function organizationLd() {
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'Organization',
-    '@id': orgId,
-    name: ORG.name,
-    legalName: ORG.legalName,
-    url: SITE_URL,
-    logo: `${SITE_URL}/images/logo-large.png`,
-    description: ORG.description,
-    email: ORG.email,
-    telephone: ORG.phone,
-    slogan: ORG.tagline,
-    sameAs: ORG.sameAs,
-    address: {
-      '@type': 'PostalAddress',
-      streetAddress: ORG.address.street,
-      addressLocality: ORG.address.city,
-      addressRegion: ORG.address.region,
-      postalCode: ORG.address.postalCode,
-      addressCountry: ORG.address.country,
-    },
-  };
-}
-
-export function websiteLd() {
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'WebSite',
-    url: SITE_URL,
-    name: ORG.name,
-    publisher: { '@id': orgId },
-  };
-}
-
-export function localBusinessLd() {
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'ProfessionalService',
-    '@id': orgId,
-    name: ORG.name,
-    image: `${SITE_URL}/images/logo-large.png`,
-    url: SITE_URL,
-    email: ORG.email,
-    telephone: ORG.phone,
-    priceRange: 'Government contracting',
-    address: {
-      '@type': 'PostalAddress',
-      streetAddress: ORG.address.street,
-      addressLocality: ORG.address.city,
-      addressRegion: ORG.address.region,
-      postalCode: ORG.address.postalCode,
-      addressCountry: ORG.address.country,
-    },
-  };
-}
+// Baseline Organization/WebSite JSON-LD is baked into index.html (present on every
+// page). These builders cover the per-page structured data injected via <Seo>.
 
 export function faqLd(items: { q: string; a: string }[]) {
   return {

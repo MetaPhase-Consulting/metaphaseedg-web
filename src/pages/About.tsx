@@ -7,7 +7,7 @@ export default function About() {
     <div>
       <Seo
         title="About Us"
-        description="MetaPhase EDG is a joint venture of MetaPhase, LLC and SharpEDG, LLC — former Federal Senior Executives, expert technologists, and management consultants delivering government solutions."
+        description="MetaPhase EDG is a joint venture of MetaPhase Consulting, LLC and SharpEDG, LLC — former Federal Senior Executives, expert technologists, and management consultants delivering government solutions."
         path="/about-us"
         jsonLd={breadcrumbLd([
           { name: 'Home', path: '/' },
@@ -66,10 +66,10 @@ export default function About() {
       {/* Certification Statement */}
       <section className="py-12 bg-white">
         <div className="section-container text-center max-w-3xl mx-auto">
-          {/* NOTE: "MetaPhase, LLC" per request to drop "Consulting" everywhere; confirm exact legal entity name with the team. */}
+          {/* Brand name is "MetaPhase"; full legal entity is "MetaPhase Consulting, LLC". */}
           <p className="text-lg text-mp-ink leading-relaxed">
             MetaPhase EDG is an SBA certified 8(a), EDWOSB, WOSB, Small Business Joint
-            Venture comprised of MetaPhase, LLC and SharpEDG, LLC.
+            Venture comprised of MetaPhase Consulting, LLC and SharpEDG, LLC.
           </p>
         </div>
       </section>
@@ -83,7 +83,7 @@ export default function About() {
               <img
                 src="/images/metaphase-logo.png"
                 alt="MetaPhase logo"
-                className="max-h-28 w-auto object-contain"
+                className="max-h-28 w-auto max-w-full object-contain"
               />
             </div>
             <div>
@@ -106,8 +106,15 @@ export default function About() {
             </div>
           </div>
 
-          {/* SharpEDG — text left, logo right */}
+          {/* SharpEDG — logo left, text right (same layout as MetaPhase) */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div className="flex justify-center">
+              <img
+                src="/images/sharpedg-logo.png"
+                alt="SharpEDG logo"
+                className="max-h-44 w-auto max-w-full object-contain"
+              />
+            </div>
             <div>
               <h3 className="text-2xl font-semibold text-mp-ink mb-4">
                 SharpEDG
@@ -127,13 +134,6 @@ export default function About() {
               >
                 Learn More
               </a>
-            </div>
-            <div className="flex justify-center">
-              <img
-                src="/images/sharpedg-logo.png"
-                alt="SharpEDG logo"
-                className="max-h-40 w-auto object-contain"
-              />
             </div>
           </div>
         </div>

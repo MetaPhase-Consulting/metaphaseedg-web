@@ -6,6 +6,7 @@ import ContractVehicles from './pages/ContractVehicles';
 import Contact from './pages/Contact';
 import BookOnline from './pages/BookOnline';
 import PrivacyPolicy from './pages/PrivacyPolicy';
+import NotFound from './pages/NotFound';
 
 export default function AppRoutes() {
   return (
@@ -17,6 +18,7 @@ export default function AppRoutes() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/book-online" element={<BookOnline />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>
   );

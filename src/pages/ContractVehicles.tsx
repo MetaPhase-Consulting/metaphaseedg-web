@@ -1,40 +1,24 @@
 import { Link } from 'react-router-dom';
-import { FileText, ShieldCheck, Lightbulb, Award } from 'lucide-react';
+import { FileText, ShieldCheck, CheckCircle2, Zap, ArrowRight } from 'lucide-react';
 import Seo from '../components/Seo';
 import { faqLd, breadcrumbLd } from '../lib/jsonld';
 
-type Vehicle = {
-  name: string;
-  icon: typeof FileText;
-  details: { label: string; value: string }[];
-  note?: string;
-};
-
-const vehicles: Vehicle[] = [
+const pathways: { name: string; desc: string }[] = [
   {
-    name: 'GSA Multiple Award Schedule (MAS)',
-    icon: FileText,
-    details: [
-      { label: 'Contract Number', value: '47QTCA26D002G' },
-      { label: 'Period of Performance', value: '12/18/2025 – 12/17/2030' },
-      { label: 'SINs', value: '541611, 54151S' },
-    ],
+    name: 'MetaPhase SBIR Phase III',
+    desc: 'A pre-competed, direct-award path with no dollar or time limits — awards can be executed in days and have never been successfully protested.',
   },
   {
-    name: 'MetaPhase SBIR',
-    icon: Lightbulb,
-    details: [
-      { label: 'Authority', value: 'SBIR Phase III Direct Award' },
-      { label: 'Originating Agency', value: 'U.S. Air Force' },
-      { label: 'Topic', value: 'AF98-124' },
-    ],
-    note: 'Accessible through MetaPhase’s SBIR Phase III eligibility — a streamlined path to sole-source award.',
+    name: '8(a) Sole Source',
+    desc: 'As an SBA 8(a) certified Small Business Joint Venture, MetaPhase EDG is eligible for streamlined 8(a) sole-source awards.',
   },
   {
-    name: 'Top Secret Facility Clearance',
-    icon: ShieldCheck,
-    details: [{ label: 'Facility Clearance Level', value: 'Top Secret (TS)' }],
-    note: 'Cleared to support classified federal missions up to the Top Secret level.',
+    name: 'Commercial Solutions Opening (CSO)',
+    desc: 'A streamlined path for innovative commercial solutions outside traditional FAR processes, with commercial-style evaluation and award.',
+  },
+  {
+    name: 'Justification & Approval (J&A)',
+    desc: 'A compliant route to a directed award when the acquisition strategy supports a sole-source approach.',
   },
 ];
 
@@ -43,7 +27,7 @@ export default function ContractVehicles() {
     <div>
       <Seo
         title="Contract Vehicles"
-        description="Put MetaPhase EDG on contract: GSA MAS 47QTCA26D002G (SINs 541611, 54151S), MetaPhase SBIR Phase III, Top Secret Facility Clearance, and 8(a)/EDWOSB/WOSB set-asides."
+        description="Contract with MetaPhase EDG via GSA MAS 47QTCA26D002G (SINs 541611, 54151S), 8(a)/EDWOSB/WOSB set-asides, a Top Secret Facility Clearance, and acquisition pathways including SBIR Phase III and 8(a) sole source."
         path="/contract-vehicles"
         jsonLd={[
           breadcrumbLd([
@@ -61,7 +45,7 @@ export default function ContractVehicles() {
             },
             {
               q: 'Can MetaPhase EDG receive sole-source awards?',
-              a: 'Yes. As an SBA 8(a) certified Small Business Joint Venture and through MetaPhase SBIR Phase III authority, MetaPhase EDG is eligible for streamlined and sole-source awards.',
+              a: 'Yes. As an SBA 8(a) certified Small Business Joint Venture, and through acquisition pathways such as SBIR Phase III, MetaPhase EDG is eligible for streamlined and sole-source awards.',
             },
           ]),
         ]}
@@ -73,12 +57,12 @@ export default function ContractVehicles() {
             Contract Vehicles
           </h1>
           <h2 className="text-xl sm:text-2xl font-semibold text-mp-edg-blue mb-6">
-            Easy ways to put MetaPhase EDG on contract
+            How to put MetaPhase EDG on contract
           </h2>
           <p className="text-base text-mp-ink leading-relaxed max-w-3xl mx-auto">
             MetaPhase EDG is an SBA-certified 8(a), EDWOSB, and WOSB Small Business Joint
-            Venture. Below are the vehicles and credentials your contracting team can use to
-            access our technology and management consulting services.
+            Venture. Below are our contract vehicle, set-aside designations, facility clearance,
+            and the acquisition pathways available to your contracting team.
           </p>
         </div>
       </section>
@@ -89,14 +73,13 @@ export default function ContractVehicles() {
       {/* Set-aside designations */}
       <section className="py-10 bg-white">
         <div className="section-container">
-          <h2 className="sr-only">Set-aside designations</h2>
-          <ul className="flex flex-wrap justify-center gap-3">
+          <h2 className="text-sm font-semibold uppercase tracking-wide text-mp-edg-blue text-center mb-5">
+            Set-Aside Designations
+          </h2>
+          <ul className="flex flex-wrap items-center justify-center gap-x-10 gap-y-3">
             {['SBA 8(a)', 'EDWOSB', 'WOSB', 'Small Business Joint Venture'].map((cert) => (
-              <li
-                key={cert}
-                className="flex items-center gap-2 rounded-full border border-mp-edg-blue/30 bg-mp-edg-blue/5 px-4 py-2 text-sm font-semibold text-mp-ink"
-              >
-                <Award size={16} className="text-mp-orange" aria-hidden="true" />
+              <li key={cert} className="flex items-center gap-2 text-lg font-semibold text-mp-ink">
+                <CheckCircle2 size={20} className="text-mp-orange" aria-hidden="true" />
                 {cert}
               </li>
             ))}
@@ -104,49 +87,95 @@ export default function ContractVehicles() {
         </div>
       </section>
 
-      {/* Vehicles */}
+      {/* Contract vehicle */}
       <section className="py-12 bg-[#F5F5F5]">
         <div className="section-container">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {vehicles.map((v) => {
-              const Icon = v.icon;
-              return (
-                <div
-                  key={v.name}
-                  className="flex flex-col rounded-xl bg-white p-6 shadow-sm ring-1 ring-gray-100"
-                >
-                  <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-mp-orange/10">
-                    <Icon size={26} className="text-mp-orange" aria-hidden="true" />
-                  </div>
-                  <h3 className="text-xl font-semibold text-mp-ink mb-4">{v.name}</h3>
-                  <dl className="space-y-2 text-sm">
-                    {v.details.map((d) => (
-                      <div key={d.label}>
-                        <dt className="font-semibold text-mp-edg-blue">{d.label}</dt>
-                        <dd className="text-mp-ink">{d.value}</dd>
-                      </div>
-                    ))}
-                  </dl>
-                  {v.note && (
-                    <p className="mt-4 text-sm text-gray-600 leading-relaxed">{v.note}</p>
-                  )}
+          <h2 className="text-2xl font-semibold text-mp-ink text-center mb-8">
+            Contract Vehicle
+          </h2>
+          <div className="mx-auto max-w-xl rounded-xl bg-white p-8 shadow-sm ring-1 ring-gray-100">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-mp-orange/10">
+              <FileText size={26} className="text-mp-orange" aria-hidden="true" />
+            </div>
+            <h3 className="text-xl font-semibold text-mp-ink mb-4">
+              GSA Multiple Award Schedule (MAS)
+            </h3>
+            <dl className="space-y-2 text-sm">
+              {[
+                { label: 'Contract Number', value: '47QTCA26D002G' },
+                { label: 'Period of Performance', value: '12/18/2025 – 12/17/2030' },
+                { label: 'SINs', value: '541611, 54151S' },
+              ].map((d) => (
+                <div key={d.label}>
+                  <dt className="font-semibold text-mp-edg-blue">{d.label}</dt>
+                  <dd className="text-mp-ink">{d.value}</dd>
                 </div>
-              );
-            })}
+              ))}
+            </dl>
+          </div>
+        </div>
+      </section>
+
+      {/* Facility clearance */}
+      <section className="py-12 bg-white">
+        <div className="section-container">
+          <div className="mx-auto flex max-w-3xl flex-col items-center gap-6 rounded-2xl border border-mp-edg-blue/20 bg-gradient-to-br from-mp-edg-blue/5 to-mp-orange/5 p-8 text-center sm:flex-row sm:text-left">
+            <div className="relative flex h-24 w-24 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-mp-edg-blue to-mp-orange shadow-lg">
+              <ShieldCheck size={48} className="text-white" aria-hidden="true" strokeWidth={1.75} />
+              <span className="absolute -bottom-1 rounded bg-mp-ink px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-white">
+                Top Secret
+              </span>
+            </div>
+            <div>
+              <h2 className="text-2xl font-semibold text-mp-ink mb-2">
+                Top Secret Facility Clearance
+              </h2>
+              <p className="text-base text-mp-ink leading-relaxed">
+                MetaPhase EDG holds a Top Secret (TS) Facility Clearance and is cleared to support
+                classified federal missions up to the Top Secret level.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Additional acquisition pathways */}
+      <section className="py-12 bg-[#F5F5F5]">
+        <div className="section-container">
+          <h2 className="text-2xl font-semibold text-mp-ink text-center mb-3">
+            Additional Acquisition Pathways
+          </h2>
+          <p className="mx-auto mb-10 max-w-3xl text-center text-base text-mp-ink leading-relaxed">
+            Beyond traditional vehicles, several pathways let agencies put MetaPhase EDG on
+            contract quickly and compliantly.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {pathways.map((p) => (
+              <div
+                key={p.name}
+                className="flex gap-4 rounded-xl bg-white p-6 shadow-sm ring-1 ring-gray-100"
+              >
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-mp-orange/10">
+                  <Zap size={20} className="text-mp-orange" aria-hidden="true" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold text-mp-ink mb-1">{p.name}</h3>
+                  <p className="text-sm text-gray-600 leading-relaxed">{p.desc}</p>
+                </div>
+              </div>
+            ))}
           </div>
 
-          <p className="mt-10 text-center text-base text-mp-ink">
-            MetaPhase EDG can also leverage MetaPhase&rsquo;s broader portfolio of GWAC, IDIQ,
-            BPA, and agency-specific vehicles.{' '}
+          <p className="mt-8 text-center">
             <a
-              href="https://metaphase.tech/contract-vehicles"
+              href="https://metaphase.tech/acquisitions"
               target="_blank"
               rel="noopener noreferrer"
-              className="font-semibold text-mp-edg-blue hover:text-mp-orange underline"
+              className="inline-flex items-center gap-2 font-semibold text-mp-edg-blue hover:text-mp-orange underline"
             >
-              View the full list
+              Explore acquisition pathways on MetaPhase.tech
+              <ArrowRight size={16} aria-hidden="true" />
             </a>
-            .
           </p>
         </div>
       </section>

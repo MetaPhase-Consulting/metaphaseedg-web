@@ -30,13 +30,6 @@ describe('Footer', () => {
     expect(screen.getByText('703-399-4069')).toBeInTheDocument();
   });
 
-  it('renders the contract vehicles link', () => {
-    renderWithRouter();
-    expect(
-      screen.getByRole('link', { name: /see all contract vehicles/i })
-    ).toHaveAttribute('href', '/contract-vehicles');
-  });
-
   it('renders NAICS codes', () => {
     renderWithRouter();
     expect(screen.getByText('541611')).toBeInTheDocument();
@@ -46,7 +39,7 @@ describe('Footer', () => {
 
   it('renders address', () => {
     renderWithRouter();
-    expect(screen.getByText('11911 Freedom Dr. Suite 1010 Reston, VA 20190')).toBeInTheDocument();
+    expect(screen.getByText('11911 Freedom Dr, Ste 1010, Reston, VA 20190')).toBeInTheDocument();
   });
 
   it('renders Privacy Policy link', () => {

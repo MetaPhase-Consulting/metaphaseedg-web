@@ -11,14 +11,14 @@ export const ORG = {
   phone: '+1-703-399-4069',
   phoneDisplay: '703-399-4069',
   address: {
-    street: '11911 Freedom Dr, Suite 1010',
+    street: '11911 Freedom Dr, Ste 1010',
     city: 'Reston',
     region: 'VA',
     postalCode: '20190',
     country: 'US',
   },
   sameAs: ['https://metaphase.tech', 'https://www.sharpedg.com'],
-  founders: ['MetaPhase, LLC', 'SharpEDG, LLC'],
+  founders: ['MetaPhase Consulting, LLC', 'SharpEDG, LLC'],
   certifications: ['SBA 8(a)', 'EDWOSB', 'WOSB', 'Small Business Joint Venture'],
 };
 

@@ -6,7 +6,7 @@ NAICS, certifications, copy) live in the code — `src/lib/site.ts`, `src/pages/
 
 ## Context
 
-Corporate website for **MetaPhase EDG**, a joint venture of MetaPhase, LLC and SharpEDG, LLC,
+Corporate website for **MetaPhase EDG**, a joint venture of MetaPhase Consulting, LLC and SharpEDG, LLC,
 built with React 19 + TypeScript + Vite, deployed on Netlify.
 
 > Always refer to the parent company as **MetaPhase** — never "MetaPhase Consulting".

@@ -60,24 +60,6 @@ export default function Footer() {
               />
             </div>
           </div>
-
-          {/* Contract vehicles / clearance strip */}
-          <div className="mt-10 border-t border-gray-100 pt-6">
-            <div className="flex flex-col gap-2 text-sm text-mp-ink sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-6 sm:gap-y-2">
-              <span className="font-semibold text-mp-ink">How to reach us on contract:</span>
-              <span>
-                <span className="font-semibold">GSA MAS</span> #47QTCA26D002G &middot; SINs 541611, 54151S
-              </span>
-              <span><span className="font-semibold">MetaPhase SBIR</span> (Phase III)</span>
-              <span><span className="font-semibold">TS</span> Facility Clearance</span>
-              <Link
-                to="/contract-vehicles"
-                className="font-semibold text-mp-edg-blue hover:text-mp-edg-blue-dark underline"
-              >
-                See all contract vehicles &rarr;
-              </Link>
-            </div>
-          </div>
         </div>
       </div>
 
@@ -94,7 +76,7 @@ export default function Footer() {
             Privacy Policy
           </Link>
           <p className="text-base text-mp-ink">
-            11911 Freedom Dr. Suite 1010 Reston, VA 20190
+            11911 Freedom Dr, Ste 1010, Reston, VA 20190
           </p>
         </div>
       </div>

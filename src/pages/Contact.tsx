@@ -57,26 +57,16 @@ export default function Contact() {
       </section>
 
       {/* Contact Info + Form Section */}
-      <section className="relative py-16">
-        {/* Background image */}
-        <div className="absolute inset-0 z-0">
-          <img
-            src="/images/hero-bg.jpg"
-            alt=""
-            aria-hidden="true"
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-white/85" />
-        </div>
-
-        <div className="section-container relative z-10">
+      <section className="py-16 bg-white">
+        <div className="section-container">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             {/* Contact Information */}
             <div>
               <h2 className="sr-only">Our contact details</h2>
               <div className="space-y-4">
                 <p className="text-base text-mp-ink">
-                  11911 Freedom Dr. Suite 1010<br />
+                  11911 Freedom Dr<br />
+                  Ste 1010<br />
                   Reston, VA 20190
                 </p>
                 <a

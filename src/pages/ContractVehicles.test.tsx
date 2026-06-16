@@ -24,9 +24,9 @@ describe('ContractVehicles', () => {
     expect(screen.getByText('12/18/2025 – 12/17/2030')).toBeInTheDocument();
   });
 
-  it('mentions SBIR and TS facility clearance', () => {
+  it('mentions SBIR pathway and TS facility clearance', () => {
     renderWithRouter();
-    expect(screen.getByText('MetaPhase SBIR')).toBeInTheDocument();
+    expect(screen.getByText('MetaPhase SBIR Phase III')).toBeInTheDocument();
     expect(screen.getByText('Top Secret Facility Clearance')).toBeInTheDocument();
   });
 

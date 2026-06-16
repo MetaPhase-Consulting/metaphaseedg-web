@@ -1,13 +1,13 @@
 # MetaPhase EDG
 
 > MetaPhase EDG is a Solutions Integrator and SBA-certified 8(a), EDWOSB, and WOSB
-> Small Business Joint Venture between MetaPhase, LLC and SharpEDG, LLC. It brings
+> Small Business Joint Venture between MetaPhase Consulting, LLC and SharpEDG, LLC. It brings
 > cutting-edge technology and strategic management consulting to the U.S. Federal
 > mission. Tagline: "Problem Solvers for a Digital World."
 
 ## About
 
-- Joint venture of MetaPhase, LLC and SharpEDG, LLC.
+- Joint venture of MetaPhase Consulting, LLC and SharpEDG, LLC.
 - Team of former Federal Senior Executives, expert technologists, and industry-recognized management consultants.
 - Focus areas: digital transformation, IT modernization, cybersecurity, strategic planning, and program management for government agencies.
 
@@ -34,7 +34,7 @@
 
 - Email: info@metaphaseedg.com
 - Phone: 703-399-4069
-- Address: 11911 Freedom Dr, Suite 1010, Reston, VA 20190
+- Address: 11911 Freedom Dr, Ste 1010, Reston, VA 20190
 
 ## Pages
 

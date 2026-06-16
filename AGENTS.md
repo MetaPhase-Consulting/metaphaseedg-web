@@ -4,7 +4,7 @@ Keep this file small and current. It is the entry point for agent work on this r
 
 ## Context
 
-- Corporate site for **MetaPhase EDG**, a joint venture of **MetaPhase, LLC** and **SharpEDG, LLC**.
+- Corporate site for **MetaPhase EDG**, a joint venture of **MetaPhase Consulting, LLC** and **SharpEDG, LLC**.
 - Always refer to the parent company as **MetaPhase** (never "MetaPhase Consulting").
 - Product facts (contract vehicles, contacts, NAICS, copy) live in code — `src/lib/site.ts`,
   `src/pages/*`, and `public/llms.txt` are the source of truth, not this file.
