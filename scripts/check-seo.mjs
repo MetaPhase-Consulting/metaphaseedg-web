@@ -39,6 +39,18 @@ for (const [route, file] of Object.entries(routes)) {
   if (!html.includes('application/ld+json')) errors.push(`${label}: no JSON-LD`);
 }
 
+// 4. Prerendered 404 page (served by Netlify for misses) must be a real noindex 404
+const p404 = join(DIST, '404.html');
+if (!existsSync(p404)) {
+  errors.push('missing prerendered 404.html');
+} else {
+  const html404 = readFileSync(p404, 'utf8');
+  if (!/name="robots"\s+content="noindex/.test(html404)) errors.push('404.html missing noindex robots meta');
+  const root404 = html404.match(/<div id="root">([\s\S]*)<\/div>/);
+  if (!root404 || root404[1].length < 200) errors.push('404.html has empty/short prerendered #root');
+  if (!/not found/i.test(html404)) errors.push('404.html missing NotFound content');
+}
+
 if (errors.length) {
   console.error('SEO check FAILED:');
   for (const e of errors) console.error(`  - ${e}`);

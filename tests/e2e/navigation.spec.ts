@@ -34,6 +34,12 @@ test.describe('Navigation', () => {
     await expect(page.getByRole('heading', { name: 'Privacy Policy' })).toBeVisible();
   });
 
+  test('unknown route shows the 404 page', async ({ page }) => {
+    await page.goto('/this-route-does-not-exist');
+    await expect(page.getByRole('heading', { name: /page not found/i })).toBeVisible();
+    await expect(page.getByRole('link', { name: /back to home/i })).toBeVisible();
+  });
+
   test('header is visible on all pages', async ({ page }) => {
     const pages = ['/', '/about-us', '/contract-vehicles', '/contact', '/book-online', '/privacy-policy'];
 

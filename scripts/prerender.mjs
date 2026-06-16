@@ -63,4 +63,23 @@ for (const route of ROUTES) {
     process.exitCode = 1;
   }
 }
-console.log(`Prerendered ${ok}/${ROUTES.length} routes.`);
+
+// 404 page: render the catch-all NotFound and write a top-level dist/404.html.
+// Netlify serves this (with a 404 status) for unmatched paths via _redirects,
+// so crawlers/no-JS clients get a real noindex 404 and the client hydrates
+// against matching markup instead of the Home page.
+try {
+  const { head, body } = splitHead(render('/404'));
+  const [headPart, rest] = template.split('</head>');
+  const page = `${stripDefaults(headPart)}    ${head.trim()}\n  </head>${rest}`.replace(
+    '<div id="root"></div>',
+    `<div id="root">${body}</div>`
+  );
+  writeFileSync(join(DIST, '404.html'), page);
+  console.log('  prerendered (catch-all) -> dist/404.html');
+} catch (err) {
+  console.error('  ! failed to prerender 404.html:', err.message);
+  process.exitCode = 1;
+}
+
+console.log(`Prerendered ${ok}/${ROUTES.length} routes + 404.`);

@@ -1,1 +1,5 @@
-/*    /index.html   200
+# All real routes are prerendered to static files (dist/<route>/index.html), which
+# Netlify serves directly (static files take precedence over this rule). Any path
+# that doesn't match a prerendered file is a genuine miss -> serve the prerendered
+# 404 page with a real 404 status (avoids soft-404s and hydration mismatches).
+/*    /404.html   404
