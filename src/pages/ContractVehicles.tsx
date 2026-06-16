@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { FileText, ShieldCheck, CheckCircle2, Zap, ArrowRight } from 'lucide-react';
+import { ShieldCheck, CheckCircle2, Zap, ArrowRight } from 'lucide-react';
 import Seo from '../components/Seo';
 import { faqLd, breadcrumbLd } from '../lib/jsonld';
 
@@ -94,12 +94,16 @@ export default function ContractVehicles() {
             Contract Vehicle
           </h2>
           <div className="mx-auto max-w-xl rounded-xl bg-white p-8 shadow-sm ring-1 ring-gray-100">
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-mp-orange/10">
-              <FileText size={26} className="text-mp-orange" aria-hidden="true" />
+            <div className="mb-4 flex items-center justify-between gap-4">
+              <h3 className="text-xl font-semibold text-mp-ink">
+                GSA Multiple Award Schedule (MAS)
+              </h3>
+              <img
+                src="/images/gsa-logo.png"
+                alt="U.S. General Services Administration"
+                className="h-10 sm:h-12 w-auto shrink-0"
+              />
             </div>
-            <h3 className="text-xl font-semibold text-mp-ink mb-4">
-              GSA Multiple Award Schedule (MAS)
-            </h3>
             <dl className="space-y-2 text-sm">
               {[
                 { label: 'Contract Number', value: '47QTCA26D002G' },
