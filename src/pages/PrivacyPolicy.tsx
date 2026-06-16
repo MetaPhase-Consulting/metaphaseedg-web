@@ -1,6 +1,13 @@
+import Seo from '../components/Seo';
+
 export default function PrivacyPolicy() {
   return (
     <div>
+      <Seo
+        title="Privacy Policy"
+        description="How MetaPhase EDG collects, uses, and shares personal information."
+        path="/privacy-policy"
+      />
       {/* Hero Section */}
       <section className="py-16 bg-white">
         <div className="section-container">
@@ -225,7 +232,7 @@ export default function PrivacyPolicy() {
             <p>
               <a
                 href="mailto:info@metaphaseedg.com"
-                className="text-[#36A6ED] hover:text-[#9E3FFD] transition-colors"
+                className="text-mp-edg-blue hover:text-mp-orange transition-colors"
               >
                 info@metaphaseedg.com
               </a>

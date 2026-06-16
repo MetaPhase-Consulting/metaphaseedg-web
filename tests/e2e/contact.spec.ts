@@ -6,9 +6,10 @@ test.describe('Contact Page', () => {
   });
 
   test('displays contact information', async ({ page }) => {
-    await expect(page.getByText('11911 Freedom Dr. Suite 1010').first()).toBeVisible();
-    await expect(page.getByRole('link', { name: 'info@metaphaseedg.com', exact: true })).toBeVisible();
-    await expect(page.getByText('301-537-3719')).toBeVisible();
+    const main = page.getByRole('main');
+    await expect(main.getByText(/11911 Freedom Dr/).first()).toBeVisible();
+    await expect(main.getByRole('link', { name: 'info@metaphaseedg.com', exact: true })).toBeVisible();
+    await expect(main.getByText('703-399-4069')).toBeVisible();
   });
 
   test('contact form has all required fields', async ({ page }) => {

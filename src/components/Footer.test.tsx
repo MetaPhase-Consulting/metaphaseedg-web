@@ -24,9 +24,10 @@ describe('Footer', () => {
     ).toBeInTheDocument();
   });
 
-  it('renders contact email', () => {
+  it('renders contact email and phone', () => {
     renderWithRouter();
-    expect(screen.getByText('Info@MetaPhaseEDG.com')).toBeInTheDocument();
+    expect(screen.getByText('info@metaphaseedg.com')).toBeInTheDocument();
+    expect(screen.getByText('703-399-4069')).toBeInTheDocument();
   });
 
   it('renders NAICS codes', () => {
@@ -38,7 +39,7 @@ describe('Footer', () => {
 
   it('renders address', () => {
     renderWithRouter();
-    expect(screen.getByText('11911 Freedom Dr. Suite 1010 Reston, VA 20190')).toBeInTheDocument();
+    expect(screen.getByText('11911 Freedom Dr, Ste 1010, Reston, VA 20190')).toBeInTheDocument();
   });
 
   it('renders Privacy Policy link', () => {

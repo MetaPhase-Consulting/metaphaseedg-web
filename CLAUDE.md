@@ -1,68 +1,69 @@
 # MetaPhase EDG Website — CLAUDE.md
 
-## Project Context
+Instructions for AI agents working in this repo. Product facts (contract vehicles, phone,
+NAICS, certifications, copy) live in the code — `src/lib/site.ts`, `src/pages/*`, and
+`public/llms.txt` are the source of truth. Don't duplicate them here.
 
-This is the corporate website for **MetaPhase EDG**, a Solutions Integrator joint venture between MetaPhase Consulting, LLC and SharpEDG, LLC. The site was migrated from Wix to a modern React + Vite stack deployed on Netlify. The goal is a faithful 1-for-1 reproduction of the original Wix-hosted site at https://www.metaphaseedg.com/.
+## Context
 
-## Company Overview
+Corporate website for **MetaPhase EDG**, a joint venture of MetaPhase Consulting, LLC and SharpEDG, LLC,
+built with React 19 + TypeScript + Vite, deployed on Netlify.
 
-MetaPhase EDG is an SBA certified 8(a), EDWOSB, WOSB Small Business Joint Venture. They bring cutting-edge technology and strategic management consulting to provide holistic solutions for the Federal mission. The team includes former Federal Senior Executives, expert technologists, and industry-recognized management consultants.
+> Always refer to the parent company as **MetaPhase** — never "MetaPhase Consulting".
 
-## Tech Stack
+## Tech & Architecture
 
-- **Framework**: React 19 + TypeScript + Vite
-- **Styling**: Tailwind CSS 3 with custom brand theme
-- **Routing**: React Router v7
-- **Testing**: Vitest (unit) + Playwright (E2E + accessibility)
-- **Deployment**: Netlify (with `public/_redirects` for SPA routing)
-- **Fonts**: Work Sans (Google Fonts), Avenir (system fallback)
+- React 19 + TypeScript + Vite 7; Tailwind CSS 3; React Router v7.
+- **Rendering**: client SPA that is **prerendered to static HTML per route** for SEO/GEO.
+  `AppRoutes.tsx` is the router-agnostic route table shared by the client (`App.tsx` →
+  `BrowserRouter`, hydrated in `main.tsx`) and the SSR entry (`entry-server.tsx`).
+  `scripts/prerender.mjs` renders each route and relocates React 19's hoisted `<head>` tags.
+- **SEO/GEO**: per-page metadata + JSON-LD via `src/components/Seo.tsx`; site-wide facts in
+  `src/lib/site.ts`; structured-data builders in `src/lib/jsonld.ts`. Baseline
+  `Organization`/`WebSite` JSON-LD is baked into `index.html`. Crawler files:
+  `public/robots.txt`, `public/sitemap.xml`, `public/llms.txt`.
+- **Adding a route**: add the page + route in `AppRoutes.tsx`, add the path to `ROUTES` in
+  `src/lib/site.ts`, and add it to `public/sitemap.xml`. Give the page a `<Seo>` block.
+- **Contact form**: Netlify Forms; delivery isolated in `src/lib/contactSubmit.ts`.
 
-## Brand Design System (from original Wix site)
+## Design tokens (Tailwind, `tailwind.config.js`)
 
-### Colors
-- Primary text: `#16163F` (dark navy/indigo)
-- Button/accent blue: `#36A6ED`
-- Active link purple: `#9E3FFD`
-- Background: white (`#FFFFFF`)
-- Footer background: light gray
+- `mp-orange` `#fb641f` — primary accent / CTAs / active nav / "MetaPhase" in the wordmark
+- `mp-edg-blue` `#4A6CD4` — secondary accent / "EDG" in the wordmark
+- `mp-ink` `#16163F` — primary text
+- The header icon is the MetaPhase EDG atom (`/images/metaphase-edg-icon.png`, cropped from `logo.png`); prefer tokens over raw hex.
 
-### Typography
-- Headings: Work Sans SemiBold
-- Body text: Avenir Light (fallback to system sans-serif)
-- Logo text: Work Sans SemiBold, ~59px
+## Coding style
 
-### Logo
-- MetaPhase EDG with blue/purple swirl icon
-- Tagline below logo: "Problem Solvers for a Digital World"
+- TypeScript, 2-space indent, one default-exported component per page/component file.
+- Tailwind for styling; keep it accessible (labels, alt text, focus states, landmarks).
+- Lint clean before PRs; fix net-new issues you introduce.
 
-## Pages
-1. **Home** (`/`) — Hero with background image, company description, service highlights
-2. **About Us** (`/about-us`) — JV description, MetaPhase + SharpEDG details, certifications
-3. **Contact** (`/contact`) — Contact form (sends email to info@metaphaseedg.com), office address, phone
-4. **Book Online** (`/book-online`) — Scheduling page
-5. **Privacy Policy** (`/privacy-policy`) — Legal text
+## Testing
 
-## Contact Information
-- **Email**: info@metaphaseedg.com
-- **Phone**: 301-537-3719
-- **Address**: 11911 Freedom Dr. Suite 1010, Reston, VA 20190
+- Unit (Vitest) co-located as `*.test.tsx`; E2E (Playwright) in `tests/e2e/` (navigation,
+  contact, accessibility via `@axe-core/playwright`, seo).
+- Use accessible, behavior-focused locators; scope to `main` when nav/footer duplicate text.
 
-## NAICS Codes
-541611, 541519, 541512, 541511, 541880, 541330, 541990, 541618, 611430, 611420
+## Commands
 
-## Key Commands
-- `npm run dev` — Start dev server (http://localhost:5173)
-- `npm run build` — Production build to `dist/`
-- `npm run preview` — Preview built app
-- `npm run lint` — Run ESLint
-- `npm run test` — Run Vitest in watch mode
-- `npm run test:run` — Run Vitest once
-- `npm run test:e2e` — Run Playwright E2E tests
+- `npm run dev` — dev server (http://localhost:5173)
+- `npm run build` — tsc → client build → SSR build → prerender all routes to `dist/`
+- `npm run check:seo` — verify robots/sitemap/llms + prerendered head/body
+- `npm run lint` · `npm run test:run` · `npm run test:e2e`
 
-## Owner Notes
-- Repo is public but NOT open source (no license file)
-- Deploy to Netlify
-- Work on `dev` branch, PR into `main`
-- Contact form should simply send email to the email listed — super simple functionality
-- Regularly commit and push progress
-- Standard GitHub files (PR template, etc.) but no CONTRIBUTING.md needed
+## Branching & PRs
+
+- Work on `feature/*` → **PR into `dev`** → promote `dev` → `main`.
+- Conventional commits. Human-authored only — no AI attribution in commits/PRs.
+
+## Run checklist
+
+`npm run build` → `npm run check:seo` → `npm run lint` → `npm run test:run` →
+`npm run test:e2e`, then commit and push.
+
+## Owner notes
+
+- Repo is public but NOT open source (no license file).
+- Deploy target is Netlify; DNS + email routing on Cloudflare.
+- Standard GitHub files (PR template) but no CONTRIBUTING.md needed.

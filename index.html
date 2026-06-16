@@ -2,13 +2,60 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="MetaPhase EDG - Solutions Integrator bringing cutting-edge technology and strategic management consulting to provide holistic solutions for the Federal mission." />
+    <meta name="theme-color" content="#16163F" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <!-- TODO: replace content with the verification token from Google Search Console -->
+    <meta name="google-site-verification" content="TODO-add-search-console-token" />
+
+    <!-- Fallback title; per-route title/description/OG/canonical are managed by the
+         <Seo> component (client) and baked into <head> at prerender (see scripts/prerender.mjs). -->
+    <title>MetaPhase EDG | Solutions Integrator</title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-    <title>MetaPhase EDG | Solutions Integrator</title>
+
+    <!-- Baseline structured data for search + AI engines (present on every page) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://www.metaphaseedg.com/#organization",
+          "name": "MetaPhase EDG",
+          "legalName": "MetaPhase EDG, LLC",
+          "url": "https://www.metaphaseedg.com",
+          "logo": "https://www.metaphaseedg.com/images/logo-large.png",
+          "description": "MetaPhase EDG is an SBA-certified 8(a), EDWOSB, and WOSB Small Business Joint Venture bringing cutting-edge technology and strategic management consulting to the Federal mission.",
+          "slogan": "Problem Solvers for a Digital World",
+          "email": "info@metaphaseedg.com",
+          "telephone": "+1-703-399-4069",
+          "sameAs": ["https://metaphase.tech", "https://www.sharpedg.com"],
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "11911 Freedom Dr, Ste 1010",
+            "addressLocality": "Reston",
+            "addressRegion": "VA",
+            "postalCode": "20190",
+            "addressCountry": "US"
+          }
+        },
+        {
+          "@type": "WebSite",
+          "url": "https://www.metaphaseedg.com",
+          "name": "MetaPhase EDG",
+          "publisher": { "@id": "https://www.metaphaseedg.com/#organization" }
+        }
+      ]
+    }
+    </script>
   </head>
   <body>
     <div id="root"></div>
