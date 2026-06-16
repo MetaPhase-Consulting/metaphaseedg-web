@@ -12,9 +12,10 @@ function renderWithRouter() {
 }
 
 describe('Header', () => {
-  it('renders the MetaPhase EDG logo text', () => {
+  it('renders the two-color MetaPhase EDG wordmark', () => {
     renderWithRouter();
-    expect(screen.getByText('MetaPhase EDG')).toBeInTheDocument();
+    expect(screen.getByText('MetaPhase')).toBeInTheDocument();
+    expect(screen.getByText('EDG')).toBeInTheDocument();
   });
 
   it('renders the tagline', () => {
@@ -24,20 +25,25 @@ describe('Header', () => {
 
   it('renders navigation links', () => {
     renderWithRouter();
-    expect(screen.getByRole('link', { name: /home/i })).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: /^home$/i })).toBeInTheDocument();
     expect(screen.getByRole('link', { name: /about us/i })).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: /contact/i })).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: /contract vehicles/i })).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: /^contact$/i })).toBeInTheDocument();
   });
 
-  it('renders the logo image', () => {
+  it('renders the home link with accessible name', () => {
     renderWithRouter();
-    expect(screen.getByAltText('MetaPhase EDG logo')).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: /metaphase edg home/i })).toBeInTheDocument();
   });
 
   it('has correct navigation link targets', () => {
     renderWithRouter();
-    expect(screen.getByRole('link', { name: /home/i })).toHaveAttribute('href', '/');
+    expect(screen.getByRole('link', { name: /^home$/i })).toHaveAttribute('href', '/');
     expect(screen.getByRole('link', { name: /about us/i })).toHaveAttribute('href', '/about-us');
-    expect(screen.getByRole('link', { name: /contact/i })).toHaveAttribute('href', '/contact');
+    expect(screen.getByRole('link', { name: /contract vehicles/i })).toHaveAttribute(
+      'href',
+      '/contract-vehicles'
+    );
+    expect(screen.getByRole('link', { name: /^contact$/i })).toHaveAttribute('href', '/contact');
   });
 });

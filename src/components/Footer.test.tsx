@@ -24,9 +24,17 @@ describe('Footer', () => {
     ).toBeInTheDocument();
   });
 
-  it('renders contact email', () => {
+  it('renders contact email and phone', () => {
     renderWithRouter();
-    expect(screen.getByText('Info@MetaPhaseEDG.com')).toBeInTheDocument();
+    expect(screen.getByText('info@metaphaseedg.com')).toBeInTheDocument();
+    expect(screen.getByText('703-399-4069')).toBeInTheDocument();
+  });
+
+  it('renders the contract vehicles link', () => {
+    renderWithRouter();
+    expect(
+      screen.getByRole('link', { name: /see all contract vehicles/i })
+    ).toHaveAttribute('href', '/contract-vehicles');
   });
 
   it('renders NAICS codes', () => {

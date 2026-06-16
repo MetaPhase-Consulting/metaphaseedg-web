@@ -1,6 +1,30 @@
+import Seo from '../components/Seo';
+import { faqLd } from '../lib/jsonld';
+
 export default function Home() {
   return (
     <div>
+      <Seo
+        title="MetaPhase EDG | Solutions Integrator"
+        description="MetaPhase EDG is an SBA-certified 8(a), EDWOSB, WOSB Small Business Joint Venture delivering cutting-edge technology and strategic management consulting for the Federal mission."
+        path="/"
+        jsonLd={[
+          faqLd([
+            {
+              q: 'What is MetaPhase EDG?',
+              a: 'MetaPhase EDG is a Solutions Integrator and SBA-certified 8(a), EDWOSB, WOSB Small Business Joint Venture between MetaPhase, LLC and SharpEDG, LLC, providing technology and management consulting solutions for the U.S. Federal government.',
+            },
+            {
+              q: 'What certifications does MetaPhase EDG hold?',
+              a: 'MetaPhase EDG is an SBA-certified 8(a), Economically Disadvantaged Woman-Owned Small Business (EDWOSB), and Woman-Owned Small Business (WOSB) Joint Venture, and holds a Top Secret Facility Clearance.',
+            },
+            {
+              q: 'How can agencies contract with MetaPhase EDG?',
+              a: 'Agencies can reach MetaPhase EDG through its GSA Multiple Award Schedule (contract 47QTCA26D002G, SINs 541611 and 54151S), MetaPhase SBIR Phase III authority, and as an 8(a) sole-source eligible joint venture.',
+            },
+          ]),
+        ]}
+      />
       {/* Hero text section */}
       <section className="py-12 bg-white">
         <div className="section-container text-center max-w-3xl mx-auto">

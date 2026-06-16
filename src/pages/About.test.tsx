@@ -27,18 +27,21 @@ describe('About', () => {
     expect(screen.getByText('Meet The Team')).toBeInTheDocument();
   });
 
-  it('renders team members', () => {
+  it('renders current team members', () => {
     renderWithRouter();
     expect(screen.getByText('Sophia Edwards')).toBeInTheDocument();
     expect(screen.getByText('Fred Costa')).toBeInTheDocument();
-    expect(screen.getByText('Brett Mclaren')).toBeInTheDocument();
   });
 
-  it('renders team member photos', () => {
+  it('no longer lists Brett Mclaren', () => {
     renderWithRouter();
-    expect(screen.getByAltText('Sophia Edwards')).toBeInTheDocument();
-    expect(screen.getByAltText('Fred Costa')).toBeInTheDocument();
-    expect(screen.getByAltText('Brett Mclaren')).toBeInTheDocument();
+    expect(screen.queryByText('Brett Mclaren')).not.toBeInTheDocument();
+  });
+
+  it('renders team member photos with descriptive alt text', () => {
+    renderWithRouter();
+    expect(screen.getByAltText(/Sophia Edwards/)).toBeInTheDocument();
+    expect(screen.getByAltText(/Fred Costa/)).toBeInTheDocument();
   });
 
   it('renders certification statement', () => {
@@ -50,8 +53,13 @@ describe('About', () => {
 
   it('renders company descriptions', () => {
     renderWithRouter();
-    expect(screen.getByText('MetaPhase Consulting')).toBeInTheDocument();
-    expect(screen.getByText('SharpEDG')).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: 'MetaPhase', level: 3 })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: 'SharpEDG', level: 3 })).toBeInTheDocument();
+  });
+
+  it('no longer says "MetaPhase Consulting"', () => {
+    renderWithRouter();
+    expect(screen.queryByText(/MetaPhase Consulting/)).not.toBeInTheDocument();
   });
 
   it('renders Learn More links', () => {
@@ -62,7 +70,7 @@ describe('About', () => {
 
   it('renders company logos', () => {
     renderWithRouter();
-    expect(screen.getByAltText('MetaPhase Consulting logo')).toBeInTheDocument();
+    expect(screen.getByAltText('MetaPhase logo')).toBeInTheDocument();
     expect(screen.getByAltText('SharpEDG logo')).toBeInTheDocument();
   });
 });

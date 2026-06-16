@@ -19,6 +19,15 @@ test.describe('Navigation', () => {
     await expect(page.getByRole('heading', { name: 'Contact Us' })).toBeVisible();
   });
 
+  test('can navigate to Contract Vehicles page', async ({ page }) => {
+    await page.goto('/');
+    await page.getByRole('link', { name: 'Contract Vehicles', exact: true }).first().click();
+    await expect(
+      page.getByRole('heading', { name: 'Contract Vehicles', level: 1 })
+    ).toBeVisible();
+    await expect(page.getByRole('main').getByText('47QTCA26D002G', { exact: true })).toBeVisible();
+  });
+
   test('can navigate to Privacy Policy from footer', async ({ page }) => {
     await page.goto('/');
     await page.getByRole('link', { name: /privacy policy/i }).click();
@@ -26,16 +35,16 @@ test.describe('Navigation', () => {
   });
 
   test('header is visible on all pages', async ({ page }) => {
-    const pages = ['/', '/about-us', '/contact', '/book-online', '/privacy-policy'];
+    const pages = ['/', '/about-us', '/contract-vehicles', '/contact', '/book-online', '/privacy-policy'];
 
     for (const path of pages) {
       await page.goto(path);
-      await expect(page.getByText('MetaPhase EDG').first()).toBeVisible();
+      await expect(page.getByRole('link', { name: /metaphase edg home/i })).toBeVisible();
     }
   });
 
   test('footer is visible on all pages', async ({ page }) => {
-    const pages = ['/', '/about-us', '/contact', '/book-online', '/privacy-policy'];
+    const pages = ['/', '/about-us', '/contract-vehicles', '/contact', '/book-online', '/privacy-policy'];
 
     for (const path of pages) {
       await page.goto(path);

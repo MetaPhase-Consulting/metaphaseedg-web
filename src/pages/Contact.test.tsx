@@ -26,7 +26,7 @@ describe('Contact', () => {
     renderWithRouter();
     expect(screen.getByText(/11911 Freedom Dr/)).toBeInTheDocument();
     expect(screen.getByText('info@metaphaseedg.com')).toBeInTheDocument();
-    expect(screen.getByText('301-537-3719')).toBeInTheDocument();
+    expect(screen.getByText('703-399-4069')).toBeInTheDocument();
   });
 
   it('renders the contact form fields', () => {

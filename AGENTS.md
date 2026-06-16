@@ -1,74 +1,80 @@
 # Agent Guidelines for MetaPhase EDG Website
 
-## Project Structure & Module Organization
-- `src/` — React + TypeScript app code
-  - `components/` — Reusable UI in PascalCase (e.g., `Header.tsx`, `Footer.tsx`)
-  - `pages/` — Route views (e.g., `Home.tsx`, `About.tsx`, `Contact.tsx`)
-  - `hooks/` — Custom hooks (e.g., `useScrollAnimation.ts`)
-  - `lib/` — Utilities
-  - `App.tsx` — Router + layout
-  - `main.tsx` — Entry point
-  - `index.css` — Tailwind directives + custom styles
-- `public/` — Static assets served as-is
-  - `images/` — Site images (logo, backgrounds, icons)
-  - `_redirects` — Netlify SPA routing
-- `tests/e2e/` — Playwright specs
+Keep this file small and current. It is the entry point for agent work on this repo.
 
-## Build, Test, and Development Commands
-- `npm run dev` — Start Vite dev server (http://localhost:5173)
-- `npm run build` — TypeScript check + Vite production build to `dist/`
-- `npm run preview` — Serve built app locally
-- `npm run lint` — Run ESLint
-- `npm run test` — Run Vitest in watch mode
-- `npm run test:run` — Run Vitest once
-- `npm run test:e2e` — Run Playwright E2E tests
-- `npm run test:e2e:install` — Install Playwright browsers
+## Product Context
 
-## Coding Style & Naming Conventions
-- TypeScript, 2-space indent, prefer named exports
-- React components in PascalCase (`Header.tsx`); hooks start with `use*`
-- Keep UI in `components/`, pages in `pages/`, helpers in `lib/`
-- Tailwind CSS for styling; group classes by layout → color → state
-- Lint locally with `npm run lint`; fix warnings before PRs
+- Corporate site for **MetaPhase EDG**, a joint venture of **MetaPhase, LLC** and **SharpEDG, LLC**.
+- Always refer to the parent company as **MetaPhase** (never "MetaPhase Consulting").
+- Audience includes federal contracting officers — keep certifications, contract vehicles,
+  and contact details accurate and easy to find.
 
-## Testing Guidelines
-- **Unit**: Vitest tests co-located with components (e.g., `Header.test.tsx`)
-- **E2E**: Playwright specs in `tests/e2e/*.spec.ts`
-- **Accessibility**: @axe-core/playwright for WCAG compliance
-- Install Playwright browsers once: `npm run test:e2e:install`
-- Prefer behavior-focused assertions and accessible locators
+## Project Structure
 
-## Commit & Pull Request Guidelines
-- Conventional commits: `<type>(<scope>): <message>` (feat, fix, docs, test, refactor, ci, chore)
-- Branching: `main` (stable), `dev` (integration), `feature/*`, `bugfix/*`
-- PRs: clear summary, screenshots for UI changes, updated tests
-- Regularly commit and push progress — don't let work pile up
+- `src/`
+  - `components/` — Reusable UI in PascalCase (`Header.tsx`, `Footer.tsx`, `Seo.tsx`, `Layout.tsx`)
+  - `pages/` — Route views (`Home.tsx`, `About.tsx`, `ContractVehicles.tsx`, `Contact.tsx`, …)
+  - `lib/` — `site.ts` (central metadata), `jsonld.ts` (structured data), `contactSubmit.ts` (form delivery)
+  - `AppRoutes.tsx` — router-agnostic route table (shared by client + SSR)
+  - `App.tsx` / `main.tsx` — client entry (hydrates prerendered HTML)
+  - `entry-server.tsx` — SSR entry used by the prerender step
+- `public/` — static assets: `images/`, `_redirects`, `robots.txt`, `sitemap.xml`, `llms.txt`
+- `scripts/` — `prerender.mjs` (SSG), `check-seo.mjs` (post-build SEO gate)
+- `tests/e2e/` — Playwright specs (navigation, contact, accessibility, seo)
 
-## Design System Reference
-- **Primary text color**: `#16163F` (dark navy/indigo)
-- **Accent blue**: `#36A6ED` (buttons, links)
-- **Accent purple**: `#9E3FFD` (active nav items)
-- **Heading font**: Work Sans SemiBold
-- **Body font**: Avenir Light → system sans-serif fallback
-- **Logo**: MetaPhase EDG with blue/purple swirl icon + tagline "Problem Solvers for a Digital World"
+## Commands
 
-## Deployment
-- **Target**: Netlify
-- **SPA routing**: `public/_redirects` (`/*  /index.html  200`)
-- **Branch strategy**: Work on `dev`, PR into `main`
+- `npm run dev` — Vite dev server (http://localhost:5173)
+- `npm run build` — tsc → client build → SSR build → prerender every route to `dist/<route>/index.html`
+- `npm run check:seo` — assert robots/sitemap/llms + prerendered head/body
+- `npm run lint` / `npm run test:run` / `npm run test:e2e`
+
+## Rendering / SEO architecture
+
+- The app is a client-side SPA that is **prerendered to static HTML per route** so search and
+  AI crawlers get real content without JS. React 19 native document metadata (`<title>`,
+  `<meta>`, `<link>`) is hoisted to `<head>`; `scripts/prerender.mjs` relocates it into the
+  static file. JSON-LD `<script>` stays in `<body>` (valid for crawlers).
+- Per-page SEO lives in `src/components/Seo.tsx`; site facts in `src/lib/site.ts`. Update those,
+  not scattered literals. Adding a route? Add it to `ROUTES` in `site.ts` and `sitemap.xml`.
+
+## Design System
+
+- **MetaPhase orange** `#fb641f` (`mp-orange`) — primary accent, CTAs, links/active nav
+- **SharpEDG blue** `#4A6CD4` (`mp-edg-blue`) — secondary accent, "EDG" in the wordmark
+- **Primary text** `#16163F` (`mp-ink`)
+- Wordmark: orange swirl icon + "MetaPhase" (orange) + "EDG" (blue) + tagline
+- Headings: Work Sans SemiBold; body: system sans-serif
+- Tailwind tokens defined in `tailwind.config.js` — prefer tokens over raw hex.
+
+## Coding Style
+
+- TypeScript, 2-space indent, default-exported page/component per file
+- Tailwind for styling; keep accessible (labels, alt text, focus states, landmarks)
+- Lint clean before PRs; fix net-new issues you introduce
+
+## Testing
+
+- Unit (Vitest) co-located: `*.test.tsx`. E2E (Playwright) in `tests/e2e/`.
+- Accessibility: `@axe-core/playwright` (no critical violations). SEO: `tests/e2e/seo.spec.ts`.
+- Use accessible, behavior-focused locators; scope to `main` when footer/nav duplicate text.
+
+## Branching & PRs
+
+- Work on `feature/*` → **PR into `dev`** → promote `dev` → `main`.
+- Conventional commits (`feat`, `fix`, `docs`, `test`, `ci`, `chore`).
+- Human-authored commits/PRs only — no AI attribution.
 
 ## Owner Notes
-- This repo is public but NOT open source — no license file
-- Contact form should simply send email to info@metaphaseedg.com — keep it super simple
-- Standard GitHub files (PR template) but no CONTRIBUTING.md
-- The site is a faithful 1-for-1 clone of the Wix site at https://www.metaphaseedg.com/
-- When making changes, visually compare against the original site to ensure fidelity
+
+- Repo is public but NOT open source (no license file).
+- Contact form: Netlify Forms → `info@metaphaseedg.com` → Cloudflare Email Routing → Sophia.
+- DNS + email routing are on Cloudflare; deploy target is Netlify.
 
 ## Agent Run Checklist
-Before finishing a substantive change:
-1. Run `npm run build` — ensure production build succeeds
-2. Run `npm run lint` — ensure no lint errors
-3. Run `npm run test:run` — ensure all unit tests pass
-4. Run `npm run test:e2e` — ensure all E2E tests pass
-5. Visually verify against original site at https://www.metaphaseedg.com/
-6. Commit and push progress
+
+1. `npm run build` (includes prerender) succeeds
+2. `npm run check:seo` passes
+3. `npm run lint` clean
+4. `npm run test:run` + `npm run test:e2e` pass
+5. Commit and push progress

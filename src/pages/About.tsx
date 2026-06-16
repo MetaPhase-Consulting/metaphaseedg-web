@@ -1,18 +1,29 @@
 import { Linkedin } from 'lucide-react';
+import Seo from '../components/Seo';
+import { breadcrumbLd } from '../lib/jsonld';
 
 export default function About() {
   return (
     <div>
+      <Seo
+        title="About Us"
+        description="MetaPhase EDG is a joint venture of MetaPhase, LLC and SharpEDG, LLC — former Federal Senior Executives, expert technologists, and management consultants delivering government solutions."
+        path="/about-us"
+        jsonLd={breadcrumbLd([
+          { name: 'Home', path: '/' },
+          { name: 'About Us', path: '/about-us' },
+        ])}
+      />
       {/* Hero Section */}
       <section className="py-12 bg-white">
         <div className="section-container text-center">
-          <h1 className="text-[56px] font-semibold text-[#16163F] leading-tight mb-2">
+          <h1 className="text-[40px] sm:text-[56px] font-semibold text-mp-ink leading-tight mb-2">
             About Us
           </h1>
-          <h2 className="text-2xl font-semibold text-[#9E3FFD] mb-8">
+          <h2 className="text-xl sm:text-2xl font-semibold text-mp-edg-blue mb-8">
             Government Solutions Reimagined
           </h2>
-          <p className="text-base text-[#16163F] leading-relaxed max-w-4xl mx-auto">
+          <p className="text-base text-mp-ink leading-relaxed max-w-4xl mx-auto">
             At the heart of our enterprise lies a transformative alliance between cutting-edge
             technology and strategic management consulting, catering specifically to the unique
             needs of government entities. Our cooperative endeavor reflects a dedication to
@@ -26,30 +37,25 @@ export default function About() {
       </section>
 
       {/* Gradient divider */}
-      <div className="h-[2px] bg-gradient-to-r from-[#36A6ED] to-[#9E3FFD]" />
+      <div className="h-[2px] bg-gradient-to-r from-mp-orange to-mp-edg-blue" />
 
       {/* Meet The Team */}
       <section className="py-12 bg-white">
         <div className="section-container">
-          <h2 className="text-3xl font-semibold text-[#9E3FFD] text-center mb-12">
+          <h2 className="text-3xl font-semibold text-mp-edg-blue text-center mb-12">
             Meet The Team
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-3xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-12 max-w-3xl mx-auto">
             <TeamMember
-              image="/images/sophia-edwards.png"
+              image="/images/sophia-edwards.jpg"
               name="Sophia Edwards"
               title="Founder & CEO, SharpEDG"
             />
             <TeamMember
               image="/images/fred-costa.jpg"
               name="Fred Costa"
-              title="CEO & President, MetaPhase Consulting"
-            />
-            <TeamMember
-              image="/images/brett-mclaren.jpg"
-              name="Brett Mclaren"
-              title="Chief Strategy Officer, MetaPhase Consulting"
+              title="CEO & President, MetaPhase"
             />
           </div>
         </div>
@@ -58,9 +64,10 @@ export default function About() {
       {/* Certification Statement */}
       <section className="py-12 bg-white">
         <div className="section-container text-center max-w-3xl mx-auto">
-          <p className="text-lg text-[#16163F] leading-relaxed">
+          {/* NOTE: "MetaPhase, LLC" per request to drop "Consulting" everywhere; confirm exact legal entity name with the team. */}
+          <p className="text-lg text-mp-ink leading-relaxed">
             MetaPhase EDG is an SBA certified 8(a), EDWOSB, WOSB, Small Business Joint
-            Venture comprised of MetaPhase Consulting, LLC and SharpEDG, LLC.
+            Venture comprised of MetaPhase, LLC and SharpEDG, LLC.
           </p>
         </div>
       </section>
@@ -68,29 +75,29 @@ export default function About() {
       {/* Company Descriptions */}
       <section className="py-12 bg-[#F5F5F5]">
         <div className="section-container space-y-16">
-          {/* MetaPhase Consulting — logo left, text right */}
+          {/* MetaPhase — logo left, text right */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="flex justify-center">
               <img
                 src="/images/metaphase-logo.png"
-                alt="MetaPhase Consulting logo"
-                className="max-h-40 w-auto object-contain"
+                alt="MetaPhase logo"
+                className="max-h-28 w-auto object-contain"
               />
             </div>
             <div>
-              <h3 className="text-2xl font-semibold text-[#16163F] mb-4">
-                MetaPhase Consulting
+              <h3 className="text-2xl font-semibold text-mp-ink mb-4">
+                MetaPhase
               </h3>
-              <p className="text-base text-[#16163F] leading-relaxed mb-6">
-                MetaPhase Consulting is a team of Federally-focused digital transformation
+              <p className="text-base text-mp-ink leading-relaxed mb-6">
+                MetaPhase is a team of Federally-focused digital transformation
                 experts. We apply proven people, process, technology, and data methodologies
                 to solve problems and get results for our customers.
               </p>
               <a
-                href="https://metaphaseconsulting.com"
+                href="https://metaphase.tech"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-block px-8 py-3 bg-[#9E3FFD] text-white font-semibold rounded-full hover:bg-[#8332D4] transition-colors duration-300"
+                className="inline-block px-8 py-3 bg-mp-orange text-white font-semibold rounded-full hover:bg-mp-orange-dark transition-colors duration-300"
               >
                 Learn More
               </a>
@@ -100,10 +107,10 @@ export default function About() {
           {/* SharpEDG — text left, logo right */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h3 className="text-2xl font-semibold text-[#16163F] mb-4">
+              <h3 className="text-2xl font-semibold text-mp-ink mb-4">
                 SharpEDG
               </h3>
-              <p className="text-base text-[#16163F] leading-relaxed mb-6">
+              <p className="text-base text-mp-ink leading-relaxed mb-6">
                 SharpEDG was born to solve the challenges and frustrations of working with
                 Government Consultants observed from 20 years of Federal Service in the
                 executive ranks. With easy access as an economically disadvantaged woman-owned
@@ -114,7 +121,7 @@ export default function About() {
                 href="https://www.sharpedg.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-block px-8 py-3 bg-[#9E3FFD] text-white font-semibold rounded-full hover:bg-[#8332D4] transition-colors duration-300"
+                className="inline-block px-8 py-3 bg-mp-edg-blue text-white font-semibold rounded-full hover:bg-mp-edg-blue-dark transition-colors duration-300"
               >
                 Learn More
               </a>
@@ -146,14 +153,14 @@ function TeamMember({
     <div className="text-center">
       <img
         src={image}
-        alt={name}
-        className="w-72 h-72 object-cover rounded mx-auto mb-4"
+        alt={`${name}, ${title}`}
+        className="w-72 h-72 object-cover object-top rounded mx-auto mb-4"
       />
       <div className="flex items-center justify-center gap-2">
-        <h3 className="text-lg font-semibold text-[#16163F]">{name}</h3>
-        <Linkedin size={18} className="text-[#0077B5]" />
+        <h3 className="text-lg font-semibold text-mp-ink">{name}</h3>
+        <Linkedin size={18} className="text-[#0077B5]" aria-hidden="true" />
       </div>
-      <p className="text-sm text-[#16163F]">{title}</p>
+      <p className="text-sm text-mp-ink">{title}</p>
     </div>
   );
 }
