@@ -31,7 +31,7 @@ built with React 19 + TypeScript + Vite, deployed on Netlify.
 - `mp-orange` `#fb641f` — primary accent / CTAs / active nav / "MetaPhase" in the wordmark
 - `mp-edg-blue` `#4A6CD4` — secondary accent / "EDG" in the wordmark
 - `mp-ink` `#16163F` — primary text
-- The header icon is the MetaPhase EDG atom (`/images/logo.png`); prefer tokens over raw hex.
+- The header icon is the MetaPhase EDG atom (`/images/metaphase-edg-icon.png`, cropped from `logo.png`); prefer tokens over raw hex.
 
 ## Coding style
 

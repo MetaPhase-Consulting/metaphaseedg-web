@@ -42,7 +42,7 @@ export default function Footer() {
                   '541519', '541990',
                   '541512', '541618',
                   '541511', '611430',
-                  '541880', '611420',
+                  '611420',
                 ].map((code) => (
                   <span key={code} className="text-lg text-mp-ink">
                     {code}

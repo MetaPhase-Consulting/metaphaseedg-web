@@ -186,7 +186,7 @@ export default function ContractVehicles() {
           <h2 className="text-2xl font-semibold text-mp-ink mb-6">NAICS Codes</h2>
           <ul className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-lg text-mp-ink">
             {[
-              '541611', '541519', '541512', '541511', '541880',
+              '541611', '541519', '541512', '541511',
               '541330', '541990', '541618', '611430', '611420',
             ].map((code) => (
               <li key={code}>{code}</li>
