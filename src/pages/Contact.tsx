@@ -10,14 +10,14 @@ export default function Contact() {
     email: '',
     message: '',
   });
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState<'idle' | 'sent' | 'mailto'>('idle');
   const [submitting, setSubmitting] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitting(true);
-    await submitContact(formData);
-    setSubmitted(true);
+    const result = await submitContact(formData);
+    setStatus(result); // 'sent' (delivered) or 'mailto' (opened mail client as fallback)
     setSubmitting(false);
   };
 
@@ -96,10 +96,21 @@ export default function Contact() {
             {/* Contact Form */}
             <div>
               <h2 className="sr-only">Send us a message</h2>
-              {submitted ? (
+              {status === 'sent' ? (
                 <div className="bg-green-50 border border-green-200 rounded-lg p-8 text-center" role="status">
                   <p className="text-lg text-green-800">
                     Thank you! Your message has been sent — we&rsquo;ll be in touch shortly.
+                  </p>
+                </div>
+              ) : status === 'mailto' ? (
+                <div className="bg-blue-50 border border-blue-200 rounded-lg p-8 text-center" role="status">
+                  <p className="text-lg text-mp-ink">
+                    We&rsquo;ve opened your email app with your message pre-filled — please hit{' '}
+                    <strong>Send</strong> to reach us. If nothing opened, email us directly at{' '}
+                    <a className="text-mp-edg-blue underline" href="mailto:info@metaphaseedg.com">
+                      info@metaphaseedg.com
+                    </a>
+                    .
                   </p>
                 </div>
               ) : (
