@@ -1,4 +1,5 @@
 [![Built by MetaPhase](https://img.shields.io/badge/Built%20by-MetaPhase-fb641f)](https://metaphase.tech)
+[![Release](https://img.shields.io/github/v/release/MetaPhase-Consulting/metaphaseedg-web?color=4A6CD4)](https://github.com/MetaPhase-Consulting/metaphaseedg-web/releases)
 [![Node](https://img.shields.io/badge/Node-22-339933?logo=node.js&logoColor=white)](.nvmrc)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5-3178c6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![React](https://img.shields.io/badge/React-19-61dafb?logo=react&logoColor=white)](https://react.dev/)
