@@ -10,8 +10,6 @@ type Vehicle = {
   note?: string;
 };
 
-// NOTE: GSA MAS end date (12/17/2030) is inferred as a standard 5-year base period;
-// Sophia's email read "12/18/25 – 12/17/25" which is a typo. Confirm the exact period of performance.
 const vehicles: Vehicle[] = [
   {
     name: 'GSA Multiple Award Schedule (MAS)',

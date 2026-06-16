@@ -1,80 +1,69 @@
 # MetaPhase EDG Website — CLAUDE.md
 
-## Project Context
+Instructions for AI agents working in this repo. Product facts (contract vehicles, phone,
+NAICS, certifications, copy) live in the code — `src/lib/site.ts`, `src/pages/*`, and
+`public/llms.txt` are the source of truth. Don't duplicate them here.
 
-This is the corporate website for **MetaPhase EDG**, a Solutions Integrator joint venture between **MetaPhase, LLC** and **SharpEDG, LLC**. The site was migrated from Wix to a modern React + Vite stack deployed on Netlify. It originated as a faithful reproduction of the Wix-hosted site at https://www.metaphaseedg.com/ and is now iterating beyond it (rebrand, contract-vehicles page, SEO/GEO).
+## Context
+
+Corporate website for **MetaPhase EDG**, a joint venture of MetaPhase, LLC and SharpEDG, LLC,
+built with React 19 + TypeScript + Vite, deployed on Netlify.
 
 > Always refer to the parent company as **MetaPhase** — never "MetaPhase Consulting".
 
-## Company Overview
+## Tech & Architecture
 
-MetaPhase EDG is an SBA-certified 8(a), EDWOSB, WOSB Small Business Joint Venture with a Top Secret Facility Clearance. They bring cutting-edge technology and strategic management consulting to provide holistic solutions for the Federal mission. The team includes former Federal Senior Executives, expert technologists, and industry-recognized management consultants.
+- React 19 + TypeScript + Vite 7; Tailwind CSS 3; React Router v7.
+- **Rendering**: client SPA that is **prerendered to static HTML per route** for SEO/GEO.
+  `AppRoutes.tsx` is the router-agnostic route table shared by the client (`App.tsx` →
+  `BrowserRouter`, hydrated in `main.tsx`) and the SSR entry (`entry-server.tsx`).
+  `scripts/prerender.mjs` renders each route and relocates React 19's hoisted `<head>` tags.
+- **SEO/GEO**: per-page metadata + JSON-LD via `src/components/Seo.tsx`; site-wide facts in
+  `src/lib/site.ts`; structured-data builders in `src/lib/jsonld.ts`. Baseline
+  `Organization`/`WebSite` JSON-LD is baked into `index.html`. Crawler files:
+  `public/robots.txt`, `public/sitemap.xml`, `public/llms.txt`.
+- **Adding a route**: add the page + route in `AppRoutes.tsx`, add the path to `ROUTES` in
+  `src/lib/site.ts`, and add it to `public/sitemap.xml`. Give the page a `<Seo>` block.
+- **Contact form**: Netlify Forms; delivery isolated in `src/lib/contactSubmit.ts`.
 
-## Tech Stack
+## Design tokens (Tailwind, `tailwind.config.js`)
 
-- **Framework**: React 19 + TypeScript + Vite 7
-- **Styling**: Tailwind CSS 3 with custom brand theme
-- **Routing**: React Router v7 (router-agnostic `AppRoutes` shared by client + SSR)
-- **Rendering**: Static prerender per route (Vite SSR build + `scripts/prerender.mjs`) for SEO/GEO
-- **Testing**: Vitest (unit) + Playwright (E2E + accessibility + SEO)
-- **Deployment**: Netlify (`public/_redirects` SPA fallback); Cloudflare DNS + Email Routing
-- **Fonts**: Work Sans (Google Fonts), system sans-serif fallback
+- `mp-orange` `#fb641f` — primary accent / CTAs / active nav / "MetaPhase" in the wordmark
+- `mp-edg-blue` `#4A6CD4` — secondary accent / "EDG" in the wordmark
+- `mp-ink` `#16163F` — primary text
+- The header icon is the MetaPhase EDG atom (`/images/logo.png`); prefer tokens over raw hex.
 
-## Brand Design System
+## Coding style
 
-### Colors (Tailwind tokens in `tailwind.config.js`)
-- `mp-orange` `#fb641f` — MetaPhase orange; primary accent, CTAs, links/active nav
-- `mp-edg-blue` `#4A6CD4` — SharpEDG royal blue; secondary accent, "EDG" in wordmark
-- `mp-ink` `#16163F` — primary text (dark navy)
-- Background: white (`#FFFFFF`); section bands: light gray `#F5F5F5`
+- TypeScript, 2-space indent, one default-exported component per page/component file.
+- Tailwind for styling; keep it accessible (labels, alt text, focus states, landmarks).
+- Lint clean before PRs; fix net-new issues you introduce.
 
-### Wordmark / Logo
-- Orange swirl icon (`/images/metaphase-icon.png`) + "MetaPhase" (orange) + "EDG" (blue)
-- Tagline: "Problem Solvers for a Digital World"
+## Testing
 
-### Typography
-- Headings: Work Sans SemiBold; body: system sans-serif
+- Unit (Vitest) co-located as `*.test.tsx`; E2E (Playwright) in `tests/e2e/` (navigation,
+  contact, accessibility via `@axe-core/playwright`, seo).
+- Use accessible, behavior-focused locators; scope to `main` when nav/footer duplicate text.
 
-## Pages
-1. **Home** (`/`)
-2. **About Us** (`/about-us`) — JV description, leadership (Sophia Edwards, Fred Costa), certifications
-3. **Contract Vehicles** (`/contract-vehicles`) — GSA Schedule, SINs, SBIR, TS FCL, set-asides, NAICS
-4. **Contact** (`/contact`) — Netlify Forms contact form, address, phone
-5. **Book Online** (`/book-online`)
-6. **Privacy Policy** (`/privacy-policy`)
+## Commands
 
-## Contact Information
-- **Email**: info@metaphaseedg.com (Cloudflare Email Routing forwards to Sophia)
-- **Phone**: 703-399-4069
-- **Address**: 11911 Freedom Dr. Suite 1010, Reston, VA 20190
-
-## Contract Vehicles
-- **GSA MAS**: 47QTCA26D002G, effective 12/18/2025 – 12/17/2030 *(end date inferred — confirm)*, SINs 541611 & 54151S
-- **MetaPhase SBIR**: Phase III Direct Award authority (U.S. Air Force)
-- **TS Facility Clearance**
-
-## NAICS Codes
-541611, 541519, 541512, 541511, 541880, 541330, 541990, 541618, 611430, 611420
-
-## SEO / GEO
-- Per-route metadata + JSON-LD via `src/components/Seo.tsx`; central facts in `src/lib/site.ts`.
-- `Organization`/`WebSite` JSON-LD baked into `index.html`; `FAQPage`/`Breadcrumb` per page.
-- `public/robots.txt` (welcomes AI crawlers), `public/sitemap.xml`, `public/llms.txt`.
-- New route? Add it to `ROUTES` in `src/lib/site.ts` and to `public/sitemap.xml`.
-
-## Key Commands
 - `npm run dev` — dev server (http://localhost:5173)
 - `npm run build` — tsc → client build → SSR build → prerender all routes to `dist/`
 - `npm run check:seo` — verify robots/sitemap/llms + prerendered head/body
-- `npm run lint` — ESLint
-- `npm run test:run` — Vitest once
-- `npm run test:e2e` — Playwright E2E + a11y + SEO
+- `npm run lint` · `npm run test:run` · `npm run test:e2e`
 
-## Owner Notes
-- Repo is public but NOT open source (no license file)
-- Deploy to Netlify; DNS + email routing on Cloudflare
-- Work on `feature/*`, PR into `dev`; promote `dev` → `main`
-- Contact form: keep it simple — Netlify Forms notifying info@metaphaseedg.com
-- Regularly commit and push progress
-- Standard GitHub files (PR template, etc.) but no CONTRIBUTING.md needed
-- No AI attribution in commits/PRs (human-authored only)
+## Branching & PRs
+
+- Work on `feature/*` → **PR into `dev`** → promote `dev` → `main`.
+- Conventional commits. Human-authored only — no AI attribution in commits/PRs.
+
+## Run checklist
+
+`npm run build` → `npm run check:seo` → `npm run lint` → `npm run test:run` →
+`npm run test:e2e`, then commit and push.
+
+## Owner notes
+
+- Repo is public but NOT open source (no license file).
+- Deploy target is Netlify; DNS + email routing on Cloudflare.
+- Standard GitHub files (PR template) but no CONTRIBUTING.md needed.

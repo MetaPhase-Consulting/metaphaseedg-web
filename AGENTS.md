@@ -2,12 +2,12 @@
 
 Keep this file small and current. It is the entry point for agent work on this repo.
 
-## Product Context
+## Context
 
 - Corporate site for **MetaPhase EDG**, a joint venture of **MetaPhase, LLC** and **SharpEDG, LLC**.
 - Always refer to the parent company as **MetaPhase** (never "MetaPhase Consulting").
-- Audience includes federal contracting officers — keep certifications, contract vehicles,
-  and contact details accurate and easy to find.
+- Product facts (contract vehicles, contacts, NAICS, copy) live in code — `src/lib/site.ts`,
+  `src/pages/*`, and `public/llms.txt` are the source of truth, not this file.
 
 ## Project Structure
 
@@ -68,8 +68,8 @@ Keep this file small and current. It is the entry point for agent work on this r
 ## Owner Notes
 
 - Repo is public but NOT open source (no license file).
-- Contact form: Netlify Forms → `info@metaphaseedg.com` → Cloudflare Email Routing → Sophia.
-- DNS + email routing are on Cloudflare; deploy target is Netlify.
+- Contact form uses Netlify Forms (notification recipient is configured outside the repo).
+- Deploy target is Netlify; DNS + email routing are on Cloudflare.
 
 ## Agent Run Checklist
 

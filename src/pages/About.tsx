@@ -51,11 +51,13 @@ export default function About() {
               image="/images/sophia-edwards.jpg"
               name="Sophia Edwards"
               title="Founder & CEO, SharpEDG"
+              linkedin="https://www.linkedin.com/in/sophia-edwards-1083495/"
             />
             <TeamMember
               image="/images/fred-costa.jpg"
               name="Fred Costa"
               title="CEO & President, MetaPhase"
+              linkedin="https://www.linkedin.com/in/fredcosta/"
             />
           </div>
         </div>
@@ -144,10 +146,12 @@ function TeamMember({
   image,
   name,
   title,
+  linkedin,
 }: {
   image: string;
   name: string;
   title: string;
+  linkedin: string;
 }) {
   return (
     <div className="text-center">
@@ -158,7 +162,15 @@ function TeamMember({
       />
       <div className="flex items-center justify-center gap-2">
         <h3 className="text-lg font-semibold text-mp-ink">{name}</h3>
-        <Linkedin size={18} className="text-[#0077B5]" aria-hidden="true" />
+        <a
+          href={linkedin}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`${name} on LinkedIn`}
+          className="text-[#0077B5] hover:text-mp-edg-blue transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-mp-edg-blue rounded"
+        >
+          <Linkedin size={18} aria-hidden="true" />
+        </a>
       </div>
       <p className="text-sm text-mp-ink">{title}</p>
     </div>

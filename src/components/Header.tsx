@@ -13,7 +13,12 @@ export default function Header() {
     { to: '/contact', label: 'Contact' },
   ];
 
-  const isActive = (path: string) => location.pathname === path;
+  // Normalize trailing slashes so /about-us and /about-us/ are treated the same
+  // (keeps prerendered + client active state consistent → clean hydration).
+  const isActive = (path: string) => {
+    const current = location.pathname.replace(/\/+$/, '') || '/';
+    return current === path;
+  };
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white shadow-sm">
@@ -21,10 +26,10 @@ export default function Header() {
         {/* Logo + two-color wordmark */}
         <Link to="/" className="flex items-center gap-3 sm:gap-4" aria-label="MetaPhase EDG home">
           <img
-            src="/images/metaphase-icon.png"
+            src="/images/logo.png"
             alt=""
             aria-hidden="true"
-            className="h-12 sm:h-16 w-auto shrink-0"
+            className="h-14 sm:h-16 lg:h-20 w-auto shrink-0"
           />
           <div className="min-w-0">
             <span className="text-2xl sm:text-[34px] lg:text-[42px] font-semibold font-work-sans leading-tight block">

@@ -21,7 +21,7 @@
 
 ## Contract Vehicles
 
-- GSA Multiple Award Schedule (MAS): contract number 47QTCA26D002G, effective 12/18/2025 – 12/17/2030 (period of performance to be confirmed), SINs 541611 and 54151S.
+- GSA Multiple Award Schedule (MAS): contract number 47QTCA26D002G, effective 12/18/2025 – 12/17/2030, SINs 541611 and 54151S.
 - MetaPhase SBIR Phase III Direct Award authority (originating agency: U.S. Air Force).
 - Eligible for 8(a) sole-source awards as a certified joint venture.
 - Additional GWAC, IDIQ, BPA, and agency-specific vehicles available through MetaPhase: https://metaphase.tech/contract-vehicles

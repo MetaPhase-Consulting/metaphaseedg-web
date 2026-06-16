@@ -44,6 +44,18 @@ describe('About', () => {
     expect(screen.getByAltText(/Fred Costa/)).toBeInTheDocument();
   });
 
+  it('links team members to their LinkedIn profiles', () => {
+    renderWithRouter();
+    expect(screen.getByRole('link', { name: /Sophia Edwards on LinkedIn/i })).toHaveAttribute(
+      'href',
+      'https://www.linkedin.com/in/sophia-edwards-1083495/'
+    );
+    expect(screen.getByRole('link', { name: /Fred Costa on LinkedIn/i })).toHaveAttribute(
+      'href',
+      'https://www.linkedin.com/in/fredcosta/'
+    );
+  });
+
   it('renders certification statement', () => {
     renderWithRouter();
     expect(
