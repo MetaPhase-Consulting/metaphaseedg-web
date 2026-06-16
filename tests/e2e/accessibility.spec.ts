@@ -5,6 +5,7 @@ test.describe('Accessibility', () => {
   const pages = [
     { path: '/', name: 'Home' },
     { path: '/about-us', name: 'About Us' },
+    { path: '/contract-vehicles', name: 'Contract Vehicles' },
     { path: '/contact', name: 'Contact' },
     { path: '/book-online', name: 'Book Online' },
     { path: '/privacy-policy', name: 'Privacy Policy' },

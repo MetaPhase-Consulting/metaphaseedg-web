@@ -8,6 +8,12 @@ export default {
         'din-next': ['DIN Next', 'Arial', 'sans-serif'],
       },
       colors: {
+        // MetaPhase EDG joint-venture brand colors
+        'mp-orange': '#fb641f',       // MetaPhase orange (logo / brand)
+        'mp-orange-dark': '#E0550F',  // hover/active
+        'mp-edg-blue': '#4A6CD4',     // SharpEDG royal blue (new logo)
+        'mp-edg-blue-dark': '#3A56B0',// hover/active
+        'mp-ink': '#16163F',          // primary text (dark navy)
         // MetaPhase EDG brand colors (from Wix site CSS)
         'mp-navy': '#1B2A4A',
         'mp-dark-navy': '#0C1B2A',

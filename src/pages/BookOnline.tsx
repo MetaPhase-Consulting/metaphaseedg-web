@@ -1,6 +1,13 @@
+import Seo from '../components/Seo';
+
 export default function BookOnline() {
   return (
     <div>
+      <Seo
+        title="Book Online"
+        description="Schedule time with MetaPhase EDG. Booking availability is updated regularly — check back soon."
+        path="/book-online"
+      />
       {/* Content */}
       <section className="py-16 bg-white min-h-[60vh] flex items-start justify-center">
         <div className="section-container w-full max-w-3xl">
