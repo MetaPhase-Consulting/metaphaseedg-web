@@ -24,6 +24,18 @@ describe('ContractVehicles', () => {
     expect(screen.getByText('12/18/2025 – 12/17/2030')).toBeInTheDocument();
   });
 
+  it('lists the NASA SEWP VI contract number and ordering period', () => {
+    renderWithRouter();
+    expect(
+      screen.getByRole('heading', {
+        name: 'NASA Solutions for Enterprise-Wide Procurement (SEWP) VI',
+        level: 3,
+      })
+    ).toBeInTheDocument();
+    expect(screen.getByText('80TECH26D1903')).toBeInTheDocument();
+    expect(screen.getByText('11/01/2026 – 10/31/2036')).toBeInTheDocument();
+  });
+
   it('mentions SBIR pathway and TS facility clearance', () => {
     renderWithRouter();
     expect(screen.getByText('MetaPhase SBIR Phase III')).toBeInTheDocument();

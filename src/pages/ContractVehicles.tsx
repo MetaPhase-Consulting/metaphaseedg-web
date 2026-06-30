@@ -27,7 +27,7 @@ export default function ContractVehicles() {
     <div>
       <Seo
         title="Contract Vehicles"
-        description="Contract with MetaPhase EDG via GSA MAS 47QTCA26D002G (SINs 541611, 54151S), 8(a)/EDWOSB/WOSB set-asides, a Top Secret Facility Clearance, and acquisition pathways including SBIR Phase III and 8(a) sole source."
+        description="Contract with MetaPhase EDG via GSA MAS 47QTCA26D002G (SINs 541611, 54151S) and NASA SEWP VI GWAC 80TECH26D1903, with 8(a)/EDWOSB/WOSB set-asides, a Top Secret Facility Clearance, and acquisition pathways including SBIR Phase III and 8(a) sole source."
         path="/contract-vehicles"
         jsonLd={[
           breadcrumbLd([
@@ -38,6 +38,10 @@ export default function ContractVehicles() {
             {
               q: 'What is MetaPhase EDG’s GSA Schedule contract number?',
               a: 'MetaPhase EDG holds GSA Multiple Award Schedule contract 47QTCA26D002G with SINs 541611 and 54151S.',
+            },
+            {
+              q: 'Is MetaPhase EDG on NASA SEWP VI?',
+              a: 'Yes. MetaPhase EDG holds NASA SEWP VI Government-Wide Acquisition Contract (GWAC) 80TECH26D1903, available to all federal executive agencies for IT products and standalone IT services under Categories B and C.',
             },
             {
               q: 'Does MetaPhase EDG have a facility clearance?',
@@ -61,7 +65,7 @@ export default function ContractVehicles() {
           </h2>
           <p className="text-base text-mp-ink leading-relaxed max-w-3xl mx-auto">
             MetaPhase EDG is an SBA-certified 8(a), EDWOSB, and WOSB Small Business Joint
-            Venture. Below are our contract vehicle, set-aside designations, facility clearance,
+            Venture. Below are our contract vehicles, set-aside designations, facility clearance,
             and the acquisition pathways available to your contracting team.
           </p>
         </div>
@@ -87,35 +91,67 @@ export default function ContractVehicles() {
         </div>
       </section>
 
-      {/* Contract vehicle */}
+      {/* Contract vehicles */}
       <section className="py-12 bg-[#F5F5F5]">
         <div className="section-container">
           <h2 className="text-2xl font-semibold text-mp-ink text-center mb-8">
-            Contract Vehicle
+            Contract Vehicles
           </h2>
-          <div className="mx-auto max-w-xl rounded-xl bg-white p-8 shadow-sm ring-1 ring-gray-100">
-            <div className="mb-4 flex items-center justify-between gap-4">
-              <h3 className="text-xl font-semibold text-mp-ink">
-                GSA Multiple Award Schedule (MAS)
-              </h3>
-              <img
-                src="/images/gsa-logo.png"
-                alt="U.S. General Services Administration"
-                className="h-10 sm:h-12 w-auto shrink-0"
-              />
-            </div>
-            <dl className="space-y-2 text-sm">
-              {[
-                { label: 'Contract Number', value: '47QTCA26D002G' },
-                { label: 'Period of Performance', value: '12/18/2025 – 12/17/2030' },
-                { label: 'SINs', value: '541611, 54151S' },
-              ].map((d) => (
-                <div key={d.label}>
-                  <dt className="font-semibold text-mp-edg-blue">{d.label}</dt>
-                  <dd className="text-mp-ink">{d.value}</dd>
+          <div className="mx-auto grid max-w-6xl grid-cols-1 gap-6 md:grid-cols-2">
+            {[
+              {
+                name: 'GSA Multiple Award Schedule (MAS)',
+                logo: {
+                  src: '/images/gsa-logo.png',
+                  alt: 'U.S. General Services Administration',
+                  className: 'h-10 sm:h-12',
+                },
+                details: [
+                  { label: 'Contract Number', value: '47QTCA26D002G' },
+                  { label: 'Period of Performance', value: '12/18/2025 – 12/17/2030' },
+                  { label: 'SINs', value: '541611, 54151S' },
+                ],
+              },
+              {
+                name: 'NASA Solutions for Enterprise-Wide Procurement (SEWP) VI',
+                logo: {
+                  src: '/images/sewp-vi-logo.png',
+                  alt: 'NASA SEWP VI',
+                  className: 'h-20 sm:h-24',
+                },
+                details: [
+                  { label: 'Contract Number', value: '80TECH26D1903' },
+                  { label: 'Period of Performance', value: '11/01/2026 – 10/31/2036' },
+                  {
+                    label: 'Categories',
+                    value:
+                      'Category B (Enterprise-wide IT Service Solutions), Category C (IT Mission-Based Services)',
+                  },
+                ],
+              },
+            ].map((vehicle) => (
+              <div
+                key={vehicle.name}
+                className="rounded-xl bg-white p-8 shadow-sm ring-1 ring-gray-100"
+              >
+                <div className="mb-4 flex min-h-24 items-center justify-between gap-4">
+                  <h3 className="text-xl font-semibold text-mp-ink">{vehicle.name}</h3>
+                  <img
+                    src={vehicle.logo.src}
+                    alt={vehicle.logo.alt}
+                    className={`${vehicle.logo.className} w-auto shrink-0`}
+                  />
                 </div>
-              ))}
-            </dl>
+                <dl className="space-y-2 text-sm">
+                  {vehicle.details.map((d) => (
+                    <div key={d.label}>
+                      <dt className="font-semibold text-mp-edg-blue">{d.label}</dt>
+                      <dd className="text-mp-ink">{d.value}</dd>
+                    </div>
+                  ))}
+                </dl>
+              </div>
+            ))}
           </div>
         </div>
       </section>

@@ -22,6 +22,7 @@
 ## Contract Vehicles
 
 - GSA Multiple Award Schedule (MAS): contract number 47QTCA26D002G, effective 12/18/2025 – 12/17/2030, SINs 541611 and 54151S.
+- NASA SEWP VI: Government-Wide Acquisition Contract (GWAC) administered by NASA, available to all federal executive agencies; contract number 80TECH26D1903, ordering period 11/01/2026 – 10/31/2036; Categories B (Enterprise-wide IT Service Solutions) and C (IT Mission-Based Services); FFP, T&M, and Labor Hour orders for IT products and standalone IT services.
 - MetaPhase SBIR Phase III Direct Award authority (originating agency: U.S. Air Force).
 - Eligible for 8(a) sole-source awards as a certified joint venture.
 - Additional GWAC, IDIQ, BPA, and agency-specific vehicles available through MetaPhase: https://metaphase.tech/contract-vehicles

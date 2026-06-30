@@ -15,7 +15,7 @@ test.describe('Navigation', () => {
 
   test('can navigate to Contact page', async ({ page }) => {
     await page.goto('/');
-    await page.getByRole('link', { name: 'Contact', exact: true }).click();
+    await page.getByRole('link', { name: 'Contact Us', exact: true }).click();
     await expect(page.getByRole('heading', { name: 'Contact Us' })).toBeVisible();
   });
 
@@ -54,7 +54,7 @@ test.describe('Navigation', () => {
 
     for (const path of pages) {
       await page.goto(path);
-      await expect(page.getByText('Company Information')).toBeVisible();
+      await expect(page.getByText('Company Info')).toBeVisible();
     }
   });
 });
