@@ -68,6 +68,10 @@ export default function PrivacyPolicy() {
               </a>
               . We may update this policy from time to time; any changes will be posted on this page.
             </p>
+
+            <p>
+              <em>Last updated: June 2026.</em>
+            </p>
           </div>
         </div>
       </section>
