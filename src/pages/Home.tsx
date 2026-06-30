@@ -20,7 +20,7 @@ export default function Home() {
             },
             {
               q: 'How can agencies contract with MetaPhase EDG?',
-              a: 'Agencies can reach MetaPhase EDG through its GSA Multiple Award Schedule (contract 47QTCA26D002G, SINs 541611 and 54151S), MetaPhase SBIR Phase III authority, and as an 8(a) sole-source eligible joint venture.',
+              a: 'Agencies can reach MetaPhase EDG through its GSA Multiple Award Schedule (contract 47QTCA26D002G, SINs 541611 and 54151S), NASA SEWP VI GWAC (contract 80TECH26D1903), MetaPhase SBIR Phase III authority, and as an 8(a) sole-source eligible joint venture.',
             },
           ]),
         ]}

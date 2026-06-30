@@ -28,7 +28,7 @@ describe('Header', () => {
     expect(screen.getByRole('link', { name: /^home$/i })).toBeInTheDocument();
     expect(screen.getByRole('link', { name: /about us/i })).toBeInTheDocument();
     expect(screen.getByRole('link', { name: /contract vehicles/i })).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: /^contact$/i })).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: /^contact us$/i })).toBeInTheDocument();
   });
 
   it('renders the home link with accessible name', () => {
@@ -44,6 +44,6 @@ describe('Header', () => {
       'href',
       '/contract-vehicles'
     );
-    expect(screen.getByRole('link', { name: /^contact$/i })).toHaveAttribute('href', '/contact');
+    expect(screen.getByRole('link', { name: /^contact us$/i })).toHaveAttribute('href', '/contact');
   });
 });

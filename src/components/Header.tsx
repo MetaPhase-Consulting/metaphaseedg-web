@@ -10,7 +10,7 @@ export default function Header() {
     { to: '/', label: 'Home' },
     { to: '/about-us', label: 'About Us' },
     { to: '/contract-vehicles', label: 'Contract Vehicles' },
-    { to: '/contact', label: 'Contact' },
+    { to: '/contact', label: 'Contact Us' },
   ];
 
   // Normalize trailing slashes so /about-us and /about-us/ are treated the same

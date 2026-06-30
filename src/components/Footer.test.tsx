@@ -12,9 +12,9 @@ function renderWithRouter() {
 }
 
 describe('Footer', () => {
-  it('renders Company Information heading', () => {
+  it('renders Company Info heading', () => {
     renderWithRouter();
-    expect(screen.getByText('Company Information')).toBeInTheDocument();
+    expect(screen.getByText('Company Info')).toBeInTheDocument();
   });
 
   it('renders company description', () => {
@@ -35,6 +35,16 @@ describe('Footer', () => {
     expect(screen.getByText('541611')).toBeInTheDocument();
     expect(screen.getByText('541519')).toBeInTheDocument();
     expect(screen.getByText('611420')).toBeInTheDocument();
+  });
+
+  it('renders contract vehicles with a link to the page', () => {
+    renderWithRouter();
+    expect(screen.getByText('GSA MAS')).toBeInTheDocument();
+    expect(screen.getByText('NASA SEWP VI')).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: /view contract vehicles/i })).toHaveAttribute(
+      'href',
+      '/contract-vehicles'
+    );
   });
 
   it('renders address', () => {

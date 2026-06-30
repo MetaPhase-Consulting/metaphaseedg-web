@@ -9,28 +9,16 @@ export default function Footer() {
       {/* Footer content */}
       <div className="bg-white py-12">
         <div className="section-container">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-y-8 gap-x-12 lg:gap-x-16">
             {/* Company Information */}
             <div>
               <h2 className="text-[22px] font-semibold text-mp-ink mb-4">
-                Company Information
+                Company Info
               </h2>
-              <p className="text-base text-mp-ink leading-relaxed mb-4">
+              <p className="text-base text-mp-ink leading-relaxed">
                 MetaPhase EDG, your partner in cutting-edge technology and management
                 consulting solutions designed, built, and secured for government.
               </p>
-              <a
-                href="mailto:info@metaphaseedg.com"
-                className="block text-base text-mp-ink hover:text-mp-orange transition-colors"
-              >
-                info@metaphaseedg.com
-              </a>
-              <a
-                href="tel:+17033994069"
-                className="block text-base text-mp-ink hover:text-mp-orange transition-colors"
-              >
-                703-399-4069
-              </a>
             </div>
 
             {/* NAICS Codes */}
@@ -51,13 +39,42 @@ export default function Footer() {
               </div>
             </div>
 
-            {/* Logo */}
-            <div className="flex justify-center md:justify-end">
+            {/* Contract Vehicles */}
+            <div>
+              <h3 className="text-xl font-semibold text-mp-ink mb-4">Contract Vehicles:</h3>
+              <ul className="space-y-1">
+                <li className="text-lg text-mp-ink">GSA MAS</li>
+                <li className="text-lg text-mp-ink">NASA SEWP VI</li>
+              </ul>
+              <Link
+                to="/contract-vehicles"
+                className="mt-2 inline-block text-base font-semibold text-mp-edg-blue hover:text-mp-orange transition-colors underline"
+              >
+                View contract vehicles
+              </Link>
+            </div>
+
+            {/* Logo + Contact */}
+            <div className="flex flex-col items-center lg:items-end gap-1">
               <img
-                src="/images/logo-large.png"
+                src="/images/logo-atom.png"
                 alt="MetaPhase EDG logo"
-                className="h-44 w-auto object-contain"
+                className="h-32 w-auto max-w-full object-contain"
               />
+              <div className="text-center lg:text-right">
+                <a
+                  href="mailto:info@metaphaseedg.com"
+                  className="block text-base text-mp-ink hover:text-mp-orange transition-colors"
+                >
+                  info@metaphaseedg.com
+                </a>
+                <a
+                  href="tel:+17033994069"
+                  className="block text-base text-mp-ink hover:text-mp-orange transition-colors"
+                >
+                  703-399-4069
+                </a>
+              </div>
             </div>
           </div>
         </div>
