@@ -37,6 +37,16 @@ describe('Footer', () => {
     expect(screen.getByText('611420')).toBeInTheDocument();
   });
 
+  it('renders contract vehicles with a link to the page', () => {
+    renderWithRouter();
+    expect(screen.getByText('GSA MAS')).toBeInTheDocument();
+    expect(screen.getByText('NASA SEWP VI')).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: /view contract vehicles/i })).toHaveAttribute(
+      'href',
+      '/contract-vehicles'
+    );
+  });
+
   it('renders address', () => {
     renderWithRouter();
     expect(screen.getByText('11911 Freedom Dr, Ste 1010, Reston, VA 20190')).toBeInTheDocument();

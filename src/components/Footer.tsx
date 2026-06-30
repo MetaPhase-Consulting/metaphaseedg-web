@@ -33,7 +33,7 @@ export default function Footer() {
               </a>
             </div>
 
-            {/* NAICS Codes */}
+            {/* NAICS Codes + Contract Vehicles */}
             <div>
               <h3 className="text-xl font-semibold text-mp-ink mb-4">NAICS Codes:</h3>
               <div className="grid grid-cols-2 gap-x-8 gap-y-1">
@@ -49,6 +49,20 @@ export default function Footer() {
                   </span>
                 ))}
               </div>
+
+              <h3 className="text-xl font-semibold text-mp-ink mt-6 mb-4">
+                Contract Vehicles:
+              </h3>
+              <ul className="space-y-1">
+                <li className="text-lg text-mp-ink">GSA MAS</li>
+                <li className="text-lg text-mp-ink">NASA SEWP VI</li>
+              </ul>
+              <Link
+                to="/contract-vehicles"
+                className="mt-2 inline-block text-base font-semibold text-mp-edg-blue hover:text-mp-orange transition-colors underline"
+              >
+                View contract vehicles
+              </Link>
             </div>
 
             {/* Logo */}
