@@ -57,9 +57,9 @@ export default function Footer() {
             {/* Logo + Contact */}
             <div className="flex flex-col items-center lg:items-end gap-1">
               <img
-                src="/images/logo-large.png"
+                src="/images/logo-atom.png"
                 alt="MetaPhase EDG logo"
-                className="h-40 w-auto max-w-full object-contain"
+                className="h-32 w-auto max-w-full object-contain"
               />
               <div className="text-center lg:text-right">
                 <a
