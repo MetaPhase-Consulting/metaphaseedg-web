@@ -125,7 +125,7 @@ export default function ContractVehicles() {
                   {
                     label: 'Categories',
                     value:
-                      'Category B (Enterprise-Based IT Services), Category C (Mission-Based IT Services)',
+                      'Category B (Enterprise-wide IT Service Solutions), Category C (IT Mission-Based Services)',
                   },
                 ],
               },
