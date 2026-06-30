@@ -12,9 +12,9 @@ function renderWithRouter() {
 }
 
 describe('Footer', () => {
-  it('renders Company Information heading', () => {
+  it('renders Company Info heading', () => {
     renderWithRouter();
-    expect(screen.getByText('Company Information')).toBeInTheDocument();
+    expect(screen.getByText('Company Info')).toBeInTheDocument();
   });
 
   it('renders company description', () => {
